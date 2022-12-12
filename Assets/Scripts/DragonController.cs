@@ -11,12 +11,13 @@ public class DragonController : MonoBehaviour
     private Rigidbody2D rigidbody;
 
     public bool flying;
-
+    public bool dead;
     void Start()
     {
         myAnim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         flying = false;
+        dead = false;
     }
 
     void Update()

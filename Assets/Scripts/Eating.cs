@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Eating : MonoBehaviour
 {
+    public DragonEnergy dragonEnergy;
+
     public void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Animal")
         {
             if(Input.GetKey(KeyCode.E))
             {
-                 Debug.Log("Ate an animal!");
-                 Destroy(collision.gameObject);
+                Debug.Log("Ate an animal!");
+                Destroy(collision.gameObject);
+                dragonEnergy.Eat();
             }           
         }
     }
