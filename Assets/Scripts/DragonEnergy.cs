@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragonEnergy : MonoBehaviour
 {
     public DragonController dragon;
+    public Slider energySlider;
 
     public float maxEnergy;
     public float minEnergy;
@@ -18,12 +20,14 @@ public class DragonEnergy : MonoBehaviour
     void Start()
     {
         currentEnergy = maxEnergy / 2;
+        energySlider.value = currentEnergy;
     }
 
     // Update is called once per frame
     void Update()
     {
         currentEnergy -= decreaseAmount * Time.deltaTime;
+        energySlider.value = currentEnergy;
 
         if(currentEnergy <= minEnergy)
         {
