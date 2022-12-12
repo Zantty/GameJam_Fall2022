@@ -7,11 +7,16 @@ public class DragonController : MonoBehaviour
     public float movementSpeed = 1;
     public float rotationSpeed = 1;
 
+    private Animator myAnim;
     private Rigidbody2D rigidbody;
+
+    public bool flying;
 
     void Start()
     {
+        myAnim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
+        flying = false;
     }
 
     void Update()
@@ -22,6 +27,18 @@ public class DragonController : MonoBehaviour
         if(inputValues.magnitude > 0.1f)
         {
             transform.up = Vector3.Lerp(transform.up, rigidbody.velocity.normalized, rotationSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.Space) && !flying)
+        {
+           // myAnim.SetBool("Flying", true);
+            flying = true;
+        }
+
+        if (Input.GetKey(KeyCode.Space) && flying)
+        {
+           // myAnim.SetBool("Flying", false);
+            flying = false;
         }
     }
 }
