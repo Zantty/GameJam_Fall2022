@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DragonController : MonoBehaviour
 {
+    public DragonEnergy dragonEnergy;
+
     public float movementSpeed = 1;
     public float rotationSpeed = 1;
 

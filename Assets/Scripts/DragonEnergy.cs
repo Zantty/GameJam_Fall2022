@@ -10,7 +10,7 @@ public class DragonEnergy : MonoBehaviour
     public float minEnergy;
     [SerializeField] private float currentEnergy;
 
-    private const float decreaseAmount = 0.2f;
+    public const float decreaseAmount = 1.0f;
 
     public float replenishAmount;
 
