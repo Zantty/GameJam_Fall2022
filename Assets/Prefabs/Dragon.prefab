@@ -13,6 +13,10 @@ GameObject:
   - component: {fileID: 3831354026440559557}
   - component: {fileID: 3831354026440559418}
   - component: {fileID: 8646708031413925834}
+  - component: {fileID: 272956217}
+  - component: {fileID: 272956216}
+  - component: {fileID: 272956218}
+  - component: {fileID: 272956219}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Player
@@ -56,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,9 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837eff18bd4854c44b043c6cfbee4017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragonEnergy: {fileID: 0}
+  dragonEnergy: {fileID: 272956219}
   movementSpeed: 5
   rotationSpeed: 10
+  fatMovementSpeed: 1
   flying: 0
   dead: 0
 --- !u!114 &8646708031413925834
@@ -139,6 +144,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  gameOverMenu: {fileID: 0}
+--- !u!58 &272956217
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831354026440559417}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &272956216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831354026440559417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859fa948f0bc8a948bfd4d17cb14dae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  safe: 0
+--- !u!114 &272956218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831354026440559417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d38c2490afa04b48a5a06a26be53ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragonEnergy: {fileID: 272956219}
+  dragonDamage: 5
+  attackRate: 1
+--- !u!114 &272956219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831354026440559417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d402470454053c4478616da6a17f1b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragon: {fileID: 3831354026440559418}
+  energySlider: {fileID: 0}
+  maxEnergy: 100
+  minEnergy: 0
+  currentEnergy: 0
+  replenishAmount: 15
 --- !u!1 &3831354028074431015
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +259,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,7 +279,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 99
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0

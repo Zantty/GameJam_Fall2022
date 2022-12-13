@@ -6,16 +6,49 @@ public class Eating : MonoBehaviour
 {
     public DragonEnergy dragonEnergy;
 
+    [Space(10)]
+
+    [Header("Dragon Attack Properties")]
+    public float dragonDamage = 5;
+    public float attackRate = 1;    // seconds
+    float nextAttack = 0;
+
+    private void Update()
+    {
+        if(nextAttack > 0)
+        {
+            nextAttack -= Time.deltaTime;
+        }
+    }
+
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Animal")
+        if (Input.GetKey(KeyCode.E) && nextAttack <= 0)
         {
-            if(Input.GetKey(KeyCode.E))
+            if (collision.gameObject.tag == "Animal")
             {
                 Debug.Log("Ate an animal!");
+
                 Destroy(collision.gameObject);
                 dragonEnergy.Eat();
-            }           
+                nextAttack = attackRate;
+            }
+            else if (collision.gameObject.tag == "Villager")
+            {
+                Debug.Log("Attacked a villager!");
+
+                Villager_Health villager = collision.gameObject.GetComponent<Villager_Health>();
+                villager.AddDamage(dragonDamage);
+                if(villager.Get_CurrentHealth() <= 0)
+                {
+                    Debug.Log("Ate a villager!");
+
+                    dragonEnergy.Eat();
+                    villager.Die();
+                }
+                nextAttack = attackRate;
+            }
         }
+        
     }
 }
