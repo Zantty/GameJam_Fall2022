@@ -128,7 +128,8 @@ public class Villager_AI : MonoBehaviour
 
     public void Attack()
     {
-        if(target == dragon && Vector3.Distance(transform.position , target.position) <= attackDistance)
+        if(target == dragon && Vector3.Distance(transform.position , target.position) <= attackDistance
+            && !target.GetComponent<DragonController>().flying)
         {
             dragon.GetComponent<DragonHealth>().AddDamage(attackDamage);
         }

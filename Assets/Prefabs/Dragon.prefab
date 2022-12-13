@@ -130,6 +130,7 @@ MonoBehaviour:
   rotationSpeed: 10
   fatMovementSpeed: 1
   flying: 0
+  flyingLayerIndex: 3
   dead: 0
   safeZoneBorder: {fileID: 0}
 --- !u!114 &8646708031413925834
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  healthbar: {fileID: 0}
   gameOverMenu: {fileID: 0}
 --- !u!58 &272956217
 CircleCollider2D:

@@ -13,6 +13,8 @@ public class DragonController : MonoBehaviour
     private Rigidbody2D rigidbody;
 
     public bool flying;
+    public int flyingLayerIndex;
+
     public bool dead;
 
     public GameObject safeZoneBorder;
@@ -37,6 +39,15 @@ public class DragonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             flying = !flying;
+
+            if(flying)
+            {
+                gameObject.layer = flyingLayerIndex;
+            }
+            else
+            {
+                gameObject.layer = 0;
+            }
         }
 
         if (flying)
