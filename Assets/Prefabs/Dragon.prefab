@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3831354026440559416}
   - component: {fileID: 3831354026440559557}
   - component: {fileID: 3831354026440559418}
+  - component: {fileID: 8646708031413925834}
   m_Layer: 0
   m_Name: Dragon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,8 +121,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837eff18bd4854c44b043c6cfbee4017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragonEnergy: {fileID: 0}
   movementSpeed: 5
   rotationSpeed: 10
+  flying: 0
+  dead: 0
+--- !u!114 &8646708031413925834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831354026440559417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdee3462ceef63f4f94b17ea8db496f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &3831354028074431015
 GameObject:
   m_ObjectHideFlags: 0

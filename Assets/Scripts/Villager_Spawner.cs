@@ -6,6 +6,7 @@ public class Villager_Spawner : MonoBehaviour
 {
     public float spawnRate = 5;     // seconds
     float nextSpawn = 0;
+    [Tooltip("Should always be less than spawnRate")]    public float spawnRandomness = 1;
     public float spawnDistance = 1;
 
     [SerializeField]    private GameObject spawnPrefab;
@@ -26,7 +27,7 @@ public class Villager_Spawner : MonoBehaviour
         if(nextSpawn <= 0)
         {
             SpawnVillagers();
-            nextSpawn = spawnRate;
+            nextSpawn = spawnRate + Random.Range(-spawnRandomness, spawnRandomness);
         }
         else
         {

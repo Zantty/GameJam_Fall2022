@@ -127,6 +127,9 @@ MonoBehaviour:
   minimumDistance: 0.1
   roamingRadius: 3
   waitingTime: 2
+  attackDistance: 1
+  attackDamage: 15
+  attackRate: 2
 --- !u!114 &4068985223999241093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ca654ccfcb84f42ba5b3bc23c9eef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 5
+  spawnRate: 30
+  spawnRandomness: 10
   spawnDistance: 1
   spawnPrefab: {fileID: 6315168607434255628}

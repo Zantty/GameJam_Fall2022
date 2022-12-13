@@ -7,15 +7,27 @@ public class Villager_AI : MonoBehaviour
     private Transform dragon;
     private Rigidbody2D rigidbody;
 
+    [Header("Movement Properties")]
     public float movementSpeed = 1;
     public float rotationSpeed = 1;
 
+    [Space(10)]
+
+    [Header("Roaming Properties")]
     public float detectionDistance = 5;
     public float maxDetectionDistance = 6;
     public float minimumDistance = 0.1f;
     public float roamingRadius = 3;
     public float waitingTime = 2f;
     float waitingTimeLeft = 0;
+
+    [Space(10)]
+
+    [Header("Combat Properties")]
+    public float attackDistance = 1;
+    public float attackDamage = 25;
+    public float attackRate = 1;    // seconds
+    float nextAttack = 0;
 
     Transform target = null;
     Vector3 destination;
@@ -33,6 +45,7 @@ public class Villager_AI : MonoBehaviour
         if (distanceFromDragon <= detectionDistance)
         {
             target = dragon;
+            destination = target.position;
         }
         else if (distanceFromDragon >= maxDetectionDistance)
         {
@@ -64,12 +77,30 @@ public class Villager_AI : MonoBehaviour
             if(IsAtDestination())
             {
                 // attack!
+                if(nextAttack <= 0)
+                {
+                    Attack();
+                    nextAttack = attackRate;
+                }
             }
             else
             {
                 destination = target.position;
                 rigidbody.velocity = (destination - transform.position).normalized * movementSpeed;
             }
+        }
+
+        if(nextAttack > 0)
+        {
+            nextAttack -= Time.deltaTime;
+        }
+    }
+
+    public void Attack()
+    {
+        if(target == dragon && Vector3.Distance(transform.position , target.position) <= attackDistance)
+        {
+            dragon.GetComponent<DragonHealth>().AddDamage(attackDamage);
         }
     }
 
