@@ -14,6 +14,8 @@ public class DragonController : MonoBehaviour
 
     public bool flying;
     public bool dead;
+
+    public GameObject safeZoneBorder;
     void Start()
     {
         myAnim = GetComponent<Animator>();
@@ -35,6 +37,16 @@ public class DragonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             flying = !flying;
+        }
+
+        if (flying)
+        {
+            safeZoneBorder.SetActive(false);
+        }
+
+        if(!flying)
+        {
+            safeZoneBorder.SetActive(true);
         }
     }
 }
