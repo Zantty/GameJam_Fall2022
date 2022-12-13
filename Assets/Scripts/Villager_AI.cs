@@ -41,15 +41,18 @@ public class Villager_AI : MonoBehaviour
 
     void Update()
     {
-        float distanceFromDragon = Vector3.Distance(dragon.position, transform.position);
-        if (distanceFromDragon <= detectionDistance)
+        if(dragon)
         {
-            target = dragon;
-            destination = target.position;
-        }
-        else if (distanceFromDragon >= maxDetectionDistance)
-        {
-            target = null;
+            float distanceFromDragon = Vector3.Distance(dragon.position, transform.position);
+            if (distanceFromDragon <= detectionDistance)
+            {
+                target = dragon;
+                destination = target.position;
+            }
+            else if (distanceFromDragon >= maxDetectionDistance)
+            {
+                target = null;
+            }
         }
 
         if (target == null)

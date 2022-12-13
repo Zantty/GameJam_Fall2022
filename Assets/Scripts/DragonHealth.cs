@@ -8,6 +8,7 @@ public class DragonHealth : MonoBehaviour
     private float currentHealth;
 
     private Healthbar_UI healthbar;
+    [SerializeField] private GameObject gameOverMenu;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class DragonHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("u ded!");
+        gameOverMenu.SetActive(true);
         GameObject.Destroy(this.gameObject);
     }
 }
