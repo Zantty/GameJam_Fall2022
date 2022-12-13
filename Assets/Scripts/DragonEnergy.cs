@@ -27,7 +27,7 @@ public class DragonEnergy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentEnergy <= maxEnergy)
+        if (currentEnergy >= minEnergy)
         {
             if (!dragon.flying)
             {
@@ -49,6 +49,7 @@ public class DragonEnergy : MonoBehaviour
         if(currentEnergy >= maxEnergy)
         {
             dragon.movementSpeed = dragon.fatMovementSpeed;
+            dragon.flying = false;
         }
     }
 
