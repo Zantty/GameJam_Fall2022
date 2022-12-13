@@ -7,14 +7,12 @@ public class DragonHealth : MonoBehaviour
     public float maxHealth = 100;
     private float currentHealth;
 
-    private Healthbar_UI healthbar;
+    [SerializeField] private Healthbar_UI healthbar;
     [SerializeField] private GameObject gameOverMenu;
 
     private void Start()
     {
         currentHealth = maxHealth;
-
-        healthbar = GameObject.FindObjectOfType<Healthbar_UI>();
         healthbar.Update_Healthbar(currentHealth / maxHealth);
     }
 

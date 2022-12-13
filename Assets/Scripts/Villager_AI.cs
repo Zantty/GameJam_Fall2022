@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum EngagementState
+{
+    IGNORE , ATTACK , RUN_AWAY
+}
+
 public class Villager_AI : MonoBehaviour
 {
     private Transform dragon;
     private Rigidbody2D rigidbody;
+
+    public EngagementState engagementState;
+
+    [Space(10)]
 
     [Header("Movement Properties")]
     public float movementSpeed = 1;
@@ -14,6 +24,7 @@ public class Villager_AI : MonoBehaviour
     [Space(10)]
 
     [Header("Roaming Properties")]
+    public bool canRoam = true;
     public float detectionDistance = 5;
     public float maxDetectionDistance = 6;
     public float minimumDistance = 0.1f;
@@ -57,39 +68,55 @@ public class Villager_AI : MonoBehaviour
 
         if (target == null)
         {
-            if(IsAtDestination())
+            if(canRoam)
             {
-                if(waitingTimeLeft <= 0)
+                if (IsAtDestination())
                 {
-                    destination = (Vector3)(Random.insideUnitCircle * roamingRadius) + transform.position;
-                    waitingTimeLeft = waitingTime;
+                    if (waitingTimeLeft <= 0)
+                    {
+                        destination = (Vector3)(Random.insideUnitCircle * roamingRadius) + transform.position;
+                        waitingTimeLeft = waitingTime;
+                    }
+                    else
+                    {
+                        rigidbody.velocity = Vector2.zero;
+                        waitingTimeLeft -= Time.deltaTime;
+                    }
                 }
                 else
                 {
-                    rigidbody.velocity = Vector2.zero;
-                    waitingTimeLeft -= Time.deltaTime;
+                    rigidbody.velocity = (destination - transform.position).normalized * movementSpeed;
                 }
-            }
-            else
-            {
-                rigidbody.velocity = (destination - transform.position).normalized * movementSpeed;
             }
         }
         else
         {
-            if(IsAtDestination())
+            switch (engagementState)
             {
-                // attack!
-                if(nextAttack <= 0)
-                {
-                    Attack();
-                    nextAttack = attackRate;
-                }
-            }
-            else
-            {
-                destination = target.position;
-                rigidbody.velocity = (destination - transform.position).normalized * movementSpeed;
+                case EngagementState.ATTACK:
+                    {
+                        if (IsAtDestination())
+                        {
+                            // attack!
+                            if (nextAttack <= 0)
+                            {
+                                Attack();
+                                nextAttack = attackRate;
+                            }
+                        }
+                        else
+                        {
+                            destination = target.position;
+                            rigidbody.velocity = (destination - transform.position).normalized * movementSpeed;
+                        }
+                        break;
+                    }
+                case EngagementState.RUN_AWAY:
+                    {
+                        destination = (transform.position - target.position).normalized * 100f;
+                        rigidbody.velocity = (destination - transform.position).normalized * movementSpeed;
+                        break;
+                    }
             }
         }
 

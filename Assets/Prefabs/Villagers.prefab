@@ -110,7 +110,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6315168607434255616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,14 +123,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42c2e358f2edcf4382e3fb68b81ca75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  engagementState: 1
+  movementSpeed: 20
   rotationSpeed: 1
-  detectionDistance: 4
-  maxDetectionDistance: 6
-  minimumDistance: 0.1
-  roamingRadius: 3
+  canRoam: 1
+  detectionDistance: 25
+  maxDetectionDistance: 27.5
+  minimumDistance: 12
+  roamingRadius: 30
   waitingTime: 2
-  attackDistance: 1
+  attackDistance: 12
   attackDamage: 15
   attackRate: 2
 --- !u!114 &4068985223999241093
