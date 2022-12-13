@@ -635,6 +635,10 @@ PrefabInstance:
       value: Dragon (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3831354026440559418, guid: b2720bbcafe1cd24d92d2b026fe22b13, type: 3}
+      propertyPath: dragonEnergy
+      value: 
+      objectReference: {fileID: 272956219}
+    - target: {fileID: 3831354026440559418, guid: b2720bbcafe1cd24d92d2b026fe22b13, type: 3}
       propertyPath: movementSpeed
       value: 30
       objectReference: {fileID: 0}
@@ -784,9 +788,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
