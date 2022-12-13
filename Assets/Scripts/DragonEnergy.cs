@@ -10,7 +10,7 @@ public class DragonEnergy : MonoBehaviour
 
     public float maxEnergy;
     public float minEnergy;
-    [SerializeField] private float currentEnergy;
+    public float currentEnergy;
 
     public const float decreaseAmount = 1.0f;
     public const float decreaseAmountFlying = 2.0f;
@@ -27,14 +27,17 @@ public class DragonEnergy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!dragon.flying)
+        if (currentEnergy <= maxEnergy)
         {
-            currentEnergy -= decreaseAmount * Time.deltaTime;
-        }
+            if (!dragon.flying)
+            {
+                currentEnergy -= decreaseAmount * Time.deltaTime;
+            }
 
-        else if (dragon.flying)
-        {
-            currentEnergy -= decreaseAmountFlying * Time.deltaTime;
+            else if (dragon.flying)
+            {
+                currentEnergy -= decreaseAmountFlying * Time.deltaTime;
+            }
         }
 
         energySlider.value = currentEnergy;
@@ -45,7 +48,7 @@ public class DragonEnergy : MonoBehaviour
         }
         if(currentEnergy >= maxEnergy)
         {
-            dragon.dead = true;
+            dragon.movementSpeed = dragon.fatMovementSpeed;
         }
     }
 

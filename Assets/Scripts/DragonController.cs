@@ -7,6 +7,7 @@ public class DragonController : MonoBehaviour
     public DragonEnergy dragonEnergy;
     public float movementSpeed = 1;
     public float rotationSpeed = 1;
+    public float fatMovementSpeed = 1;
 
     private Animator myAnim;
     private Rigidbody2D rigidbody;
