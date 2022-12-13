@@ -17,6 +17,8 @@ public class DragonEnergy : MonoBehaviour
 
     public float replenishAmount;
 
+    bool incapacitated = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class DragonEnergy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentEnergy >= minEnergy)
+        if(!incapacitated)
         {
             if (!dragon.flying)
             {
@@ -44,12 +46,13 @@ public class DragonEnergy : MonoBehaviour
 
         if (currentEnergy <= minEnergy)
         {
-            dragon.dead = true;
+            incapacitated = true;
         }
         if(currentEnergy >= maxEnergy)
         {
             dragon.movementSpeed = dragon.fatMovementSpeed;
             dragon.flying = false;
+            incapacitated = true;
         }
     }
 
@@ -57,4 +60,5 @@ public class DragonEnergy : MonoBehaviour
     {
         currentEnergy += replenishAmount;
     }
+
 }
