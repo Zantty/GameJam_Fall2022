@@ -31,16 +31,9 @@ public class DragonController : MonoBehaviour
             transform.up = Vector3.Lerp(transform.up, rigidbody.velocity.normalized, rotationSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.Space) && !flying)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-           // myAnim.SetBool("Flying", true);
-            flying = true;
-        }
-
-        if (Input.GetKey(KeyCode.Space) && flying)
-        {
-           // myAnim.SetBool("Flying", false);
-            flying = false;
+            flying = !flying;
         }
     }
 }
