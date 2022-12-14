@@ -26,6 +26,24 @@ public class Eating : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Animal" || collision.gameObject.tag == "Villager")
+        {
+            collision.gameObject.GetComponent<Villager_Visual>().Toggle_Highlight(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Animal" || collision.gameObject.tag == "Villager")
+        {
+            collision.gameObject.GetComponent<Villager_Visual>().Toggle_Highlight(false);
+        }
+    }
+
+
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (Input.GetKey(KeyCode.E) && nextAttack <= 0)
