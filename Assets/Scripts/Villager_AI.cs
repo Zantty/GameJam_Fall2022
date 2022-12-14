@@ -12,6 +12,7 @@ public class Villager_AI : MonoBehaviour
 {
     private Transform dragon;
     private Rigidbody2D rigidbody;
+    private SpriteAnimation spriteAnim;
 
     public EngagementState engagementState;
 
@@ -48,6 +49,8 @@ public class Villager_AI : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         dragon = GameObject.FindGameObjectWithTag("Player").transform;
         destination = transform.position;
+
+        spriteAnim = GetComponent<SpriteAnimation>();
     }
 
     void Update()
@@ -123,6 +126,20 @@ public class Villager_AI : MonoBehaviour
         if(nextAttack > 0)
         {
             nextAttack -= Time.deltaTime;
+        }
+
+        if(spriteAnim)
+        {
+            // is moving?
+            if (rigidbody.velocity.magnitude > 0.1f)
+            {
+                spriteAnim.FlipSprite(true ? rigidbody.velocity.x < 0 : false);
+                spriteAnim.UpdateAnimation(AnimationState.MOVE);
+            }
+            else
+            {
+                spriteAnim.UpdateAnimation(AnimationState.IDLE);
+            }
         }
     }
 

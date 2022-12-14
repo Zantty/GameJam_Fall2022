@@ -11,6 +11,7 @@ public class DragonController : MonoBehaviour
 
     private Animator myAnim;
     private Rigidbody2D rigidbody;
+    private SpriteAnimation spriteAnim;
 
     public bool flying;
     public int flyingLayerIndex;
@@ -30,6 +31,8 @@ public class DragonController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         flying = false;
         dead = false;
+
+        spriteAnim = GetComponent<SpriteAnimation>();
     }
 
     void Update()
@@ -39,7 +42,28 @@ public class DragonController : MonoBehaviour
 
         if(inputValues.magnitude > 0.1f)
         {
-            transform.up = Vector3.Lerp(transform.up, rigidbody.velocity.normalized, rotationSpeed * Time.deltaTime);
+            //transform.up = Vector3.Lerp(transform.up, rigidbody.velocity.normalized, rotationSpeed * Time.deltaTime);
+
+            spriteAnim.FlipSprite(true ? inputValues.x < 0 : false);
+            if (flying)
+            {
+                spriteAnim.UpdateAnimation(AnimationState.FLY);
+            }
+            else
+            {
+                spriteAnim.UpdateAnimation(AnimationState.MOVE);
+            }
+        }
+        else
+        {
+            if (flying)
+            {
+                spriteAnim.UpdateAnimation(AnimationState.FLY);
+            }
+            else
+            {
+                spriteAnim.UpdateAnimation(AnimationState.IDLE);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

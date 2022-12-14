@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -2072676742613660878}
   - component: {fileID: -7138303654876371383}
   - component: {fileID: 2468173994891777029}
+  - component: {fileID: 2139146402816613357}
   m_Layer: 0
   m_Name: Rooster
   m_TagString: Animal
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2510462250332821296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.567074, y: 8.567074, z: 8.567074}
+  m_LocalScale: {x: 4.4548783, y: 4.369207, z: 8.567074}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1660030413572451786}
@@ -79,11 +80,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.5415094, b: 0.79876804, a: 1}
+  m_Sprite: {fileID: -605285648, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -181,6 +182,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.35
+--- !u!114 &2139146402816613357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2510462250332821296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac03a3d4065765643acde55b5ccfc2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleSprites:
+  - {fileID: -605285648, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  movementSprites:
+  - {fileID: -605285648, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  flyingSprites: []
+  frameRate: 0.5
+  animationState: 0
 --- !u!1 &2911282017739339253
 GameObject:
   m_ObjectHideFlags: 0

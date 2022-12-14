@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 272956216}
   - component: {fileID: 272956218}
   - component: {fileID: 272956219}
+  - component: {fileID: 5912532812118219638}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Player
@@ -81,12 +82,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -1385888284, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -164,9 +165,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.65
 --- !u!114 &272956216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +198,7 @@ MonoBehaviour:
   dragonController: {fileID: 0}
   dragonDamage: 5
   attackRate: 1
+  regenerationAmount: 10
   eatingAudio: {fileID: 0}
   eatingSounds: []
   bloodParticle: {fileID: 2998834020070650951, guid: 0a10e2fe17605ae458d646afebef78c8, type: 3}
@@ -219,6 +221,27 @@ MonoBehaviour:
   currentEnergy: 0
   replenishAmount: 15
   healthDecreaseAmount: 5
+--- !u!114 &5912532812118219638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831354026440559417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac03a3d4065765643acde55b5ccfc2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleSprites:
+  - {fileID: -1385888284, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  movementSprites:
+  - {fileID: 409832245, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  - {fileID: -1223666029, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  flyingSprites:
+  - {fileID: -803049802, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  frameRate: 0.5
+  animationState: 0
 --- !u!1 &3831354028074431015
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3831354028074431014
 Transform:
   m_ObjectHideFlags: 0
