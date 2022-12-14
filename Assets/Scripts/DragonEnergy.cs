@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DragonEnergy : MonoBehaviour
 {
@@ -22,9 +23,12 @@ public class DragonEnergy : MonoBehaviour
 
     bool incapacitated = false;
 
+    public TMP_Text warningText;
+
     // Start is called before the first frame update
     void Start()
     {
+        warningText.enabled = false;
         currentEnergy = maxEnergy / 2;
         energySlider.value = currentEnergy;
 
@@ -52,6 +56,7 @@ public class DragonEnergy : MonoBehaviour
         if (currentEnergy <= minEnergy)
         {
             incapacitated = true;
+            StartCoroutine(IncapacitatedIndicator());
         }
         if(currentEnergy >= minEnergy)
         {
@@ -62,6 +67,7 @@ public class DragonEnergy : MonoBehaviour
             dragon.movementSpeed = dragon.fatMovementSpeed;
             dragon.flying = false;
             incapacitated = true;
+            StartCoroutine(IncapacitatedIndicator());
         }
 
         if(currentEnergy <= 0)
@@ -75,4 +81,21 @@ public class DragonEnergy : MonoBehaviour
         currentEnergy += replenishAmount;
     }
 
+    IEnumerator IncapacitatedIndicator()
+    {
+        if (currentEnergy <= minEnergy)
+        {
+            warningText.text = "You are starving.";
+            warningText.enabled = true;
+            yield return new WaitForSeconds(3.0f);
+            warningText.enabled = false;
+        }
+        if(currentEnergy >= maxEnergy)
+        {
+            warningText.text = "You are too full...";
+            warningText.enabled = true;
+            yield return new WaitForSeconds(3.0f);
+            warningText.enabled = false;
+        }
+    }
 }
