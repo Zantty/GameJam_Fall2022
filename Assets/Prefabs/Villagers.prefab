@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 2322933000394630943}
   - component: {fileID: 1511359337666145936}
   - component: {fileID: 1189686403420804590}
+  - component: {fileID: 7492038238065022943}
   m_Layer: 0
   m_Name: Villagers
   m_TagString: Villager
@@ -215,12 +216,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.1422509, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 1078967964, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 0.75, y: 0.75}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -283,7 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ca654ccfcb84f42ba5b3bc23c9eef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  villagerManager: {fileID: 0}
   spawnRate: 30
+  maxVillagers: 0
   spawnRandomness: 10
   spawnDistance: 1
   spawnPrefab: {fileID: 6315168607434255628}
@@ -319,10 +322,10 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.75, y: 0.75}
+    oldSize: {x: 1.08, y: 1.03}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
@@ -344,6 +347,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightColor: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
   highlightElement: {fileID: 3589309346745646511}
+--- !u!114 &7492038238065022943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315168607434255628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac03a3d4065765643acde55b5ccfc2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleSprites:
+  - {fileID: 1078967964, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  movementSprites:
+  - {fileID: -1752241538, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  - {fileID: -1592393936, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  flyingSprites: []
+  landingSprites: []
+  normalIdleSprites: []
+  fatIdleSprites: []
+  skinnyIdleSprites: []
+  normalMovementSprites: []
+  fatMovementSprites: []
+  skinnyMovementSprites: []
+  frameRate: 0.5
+  animationState: 0
 --- !u!1 &7169749194021868665
 GameObject:
   m_ObjectHideFlags: 0

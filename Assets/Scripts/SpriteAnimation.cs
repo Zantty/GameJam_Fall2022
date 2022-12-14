@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum AnimationState
 {
-    IDLE , MOVE , FLY
+    IDLE , MOVE , FLY , LANDING
 }
 
 public class SpriteAnimation : MonoBehaviour
@@ -19,6 +19,9 @@ public class SpriteAnimation : MonoBehaviour
 
     public List<Sprite> flyingSprites;
     private int flyingIndex = 0;
+
+    public List<Sprite> landingSprites;
+    private int landingIndex = 0;
 
     [Space(10)]
 
@@ -58,6 +61,11 @@ public class SpriteAnimation : MonoBehaviour
             case AnimationState.FLY:
                 {
                     spriteRenderer.sprite = flyingSprites[flyingIndex];
+                    break;
+                }
+            case AnimationState.LANDING:
+                {
+                    spriteRenderer.sprite = landingSprites[landingIndex];
                     break;
                 }
         }

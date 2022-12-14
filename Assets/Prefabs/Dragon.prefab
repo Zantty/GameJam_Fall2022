@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 3831354026440559417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3831354028074431014}
@@ -221,6 +221,7 @@ MonoBehaviour:
   currentEnergy: 0
   replenishAmount: 15
   healthDecreaseAmount: 5
+  warningText: {fileID: 0}
 --- !u!114 &5912532812118219638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,12 +235,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSprites:
-  - {fileID: -1385888284, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  - {fileID: 928311367, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
   movementSprites:
-  - {fileID: 409832245, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
-  - {fileID: -1223666029, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  - {fileID: -1869681880, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  - {fileID: 1228186804, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
   flyingSprites:
-  - {fileID: -803049802, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
+  - {fileID: -312955300, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  landingSprites:
+  - {fileID: -1777077401, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  normalIdleSprites: []
+  fatIdleSprites: []
+  skinnyIdleSprites: []
+  normalMovementSprites: []
+  fatMovementSprites: []
+  skinnyMovementSprites: []
   frameRate: 0.5
   animationState: 0
 --- !u!1 &3831354028074431015

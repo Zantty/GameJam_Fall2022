@@ -46,7 +46,11 @@ public class DragonController : MonoBehaviour
             //transform.up = Vector3.Lerp(transform.up, rigidbody.velocity.normalized, rotationSpeed * Time.deltaTime);
 
             spriteAnim.FlipSprite(true ? inputValues.x < 0 : false);
-            if (flying)
+            if (isLanding)
+            {
+                spriteAnim.UpdateAnimation(AnimationState.LANDING);
+            }
+            else if(flying)
             {
                 spriteAnim.UpdateAnimation(AnimationState.FLY);
             }
@@ -57,7 +61,11 @@ public class DragonController : MonoBehaviour
         }
         else
         {
-            if (flying)
+            if (isLanding)
+            {
+                spriteAnim.UpdateAnimation(AnimationState.LANDING);
+            }
+            else if (flying)
             {
                 spriteAnim.UpdateAnimation(AnimationState.FLY);
             }
