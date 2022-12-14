@@ -20,6 +20,16 @@ public class SpriteAnimation : MonoBehaviour
     public List<Sprite> flyingSprites;
     private int flyingIndex = 0;
 
+    [Space(10)]
+
+    [Header("Dragon Sprites")]
+    public List<Sprite> normalIdleSprites;
+    public List<Sprite> fatIdleSprites;
+    public List<Sprite> skinnyIdleSprites;
+
+    public List<Sprite> normalMovementSprites;
+    public List<Sprite> fatMovementSprites;
+    public List<Sprite> skinnyMovementSprites;
 
     [Space(10)]
 

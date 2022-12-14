@@ -15,6 +15,7 @@ public class DragonController : MonoBehaviour
 
     public bool flying;
     public int flyingLayerIndex;
+    bool isLanding = false;
 
     public bool dead;
 
@@ -66,12 +67,11 @@ public class DragonController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isLanding)
         {
-            flying = !flying;
-
-            if (flying)
+            if (!flying)
             {
+                flying = true;
                 gameObject.layer = flyingLayerIndex;
                 GetComponent<DragonFlying_Visual>().Set_FlyStatus(true);
 
@@ -82,8 +82,7 @@ public class DragonController : MonoBehaviour
             {
                 gameObject.layer = 0;
                 GetComponent<DragonFlying_Visual>().Set_FlyStatus(false);
-
-                GameObject.Instantiate(landingParticle, transform);
+                StartCoroutine(landingSequence());
             }
         }
 
@@ -98,5 +97,15 @@ public class DragonController : MonoBehaviour
          // safeZoneBorder.SetActive(true);
             cloudLayer.SetActive(false);
         }
+    }
+
+    IEnumerator landingSequence()
+    {
+        isLanding = true;
+        yield return new WaitForSeconds(0.75f);
+
+        flying = false;
+        isLanding = false;
+        GameObject.Instantiate(landingParticle, transform);
     }
 }
