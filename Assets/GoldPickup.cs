@@ -5,6 +5,8 @@ using TMPro;
 
 public class GoldPickup : MonoBehaviour
 {
+    public DragonController dragonController;
+
     public int goldScore = 0;
     public int maxScore;
     public SafeZone safeZone;
@@ -22,20 +24,51 @@ public class GoldPickup : MonoBehaviour
         goldScoreText.text = goldScore.ToString();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!dragonController.flying)
+        {
+            if (collision.gameObject.tag == "Gold") 
+            {
+                collision.gameObject.GetComponent<Villager_Visual>().Toggle_Highlight(true);
+            }
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!dragonController.flying)
+        {
+            if (collision.gameObject.tag == "Gold")
+            {
+                collision.gameObject.GetComponent<Villager_Visual>().Toggle_Highlight(false);
+            }
+        }
+
+    }
+
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Gold")
+        if (collision.gameObject.tag == "Gold")
         {
-            if (Input.GetKey(KeyCode.E))
+            if (!dragonController.flying)
             {
-                if (!carrying)
+                if (Input.GetKey(KeyCode.E))
                 {
-                    gold = collision.gameObject;
-                    carrying = true;
-                    gold.transform.parent = player.transform;
-                    Debug.Log("Picked up some gold!");
-                    
-                }                
+                    if (!carrying)
+                    {
+                        gold = collision.gameObject;
+                        carrying = true;
+                        gold.transform.parent = player.transform;
+                        Debug.Log("Picked up some gold!");
+
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("Cannot pick up gold while flying.");
             }
         }
         if(collision.gameObject.tag == "SafeZone")

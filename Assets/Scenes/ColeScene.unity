@@ -1353,6 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8312d0ed4bcce984f974f6090e5da2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragonController: {fileID: 272956243}
   goldScore: 0
   maxScore: 10
   safeZone: {fileID: 0}
