@@ -54,4 +54,23 @@ public class MusicManager : MonoBehaviour
             }
         }
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(Time.timeScale <= 0.1f)
+            {
+                currentMusic = music[2];
+                musicAudioSource.clip = currentMusic;
+                musicAudioSource.Play();
+            }
+            else
+            {
+                currentMusic = music[0];
+                musicAudioSource.clip = currentMusic;
+                musicAudioSource.Play();
+            }
+        }
+    }
 }
