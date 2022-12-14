@@ -19,6 +19,11 @@ public class DragonController : MonoBehaviour
 
     public GameObject safeZoneBorder;
     public GameObject cloudLayer;
+
+    [SerializeField] private GameObject flyingParticle;
+    [SerializeField] private GameObject landingParticle;
+
+
     void Start()
     {
         myAnim = GetComponent<Animator>();
@@ -41,15 +46,20 @@ public class DragonController : MonoBehaviour
         {
             flying = !flying;
 
-            if(flying)
+            if (flying)
             {
                 gameObject.layer = flyingLayerIndex;
                 GetComponent<DragonFlying_Visual>().Set_FlyStatus(true);
+
+                GameObject instantiatedParticle = GameObject.Instantiate(flyingParticle);
+                instantiatedParticle.transform.position = transform.position;
             }
             else
             {
                 gameObject.layer = 0;
                 GetComponent<DragonFlying_Visual>().Set_FlyStatus(false);
+
+                GameObject.Instantiate(landingParticle, transform);
             }
         }
 

@@ -659,6 +659,17 @@ MonoBehaviour:
   virtualCamera: {fileID: 1868430944}
   flyingHeight: 10
   transitionSpeed: 2
+--- !u!114 &272956243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3831354026440559418, guid: b2720bbcafe1cd24d92d2b026fe22b13, type: 3}
+  m_PrefabInstance: {fileID: 838304076}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272956211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837eff18bd4854c44b043c6cfbee4017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &297715147 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3729735120179608769, guid: 05773f02f56b6fc4c835acf9d5204bac, type: 3}
@@ -1944,6 +1955,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 272956234}
     - target: {fileID: 272956218, guid: b2720bbcafe1cd24d92d2b026fe22b13, type: 3}
+      propertyPath: dragonController
+      value: 
+      objectReference: {fileID: 272956243}
+    - target: {fileID: 272956218, guid: b2720bbcafe1cd24d92d2b026fe22b13, type: 3}
       propertyPath: eatingSounds.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -2503,6 +2518,8 @@ MonoBehaviour:
   - {fileID: 2510462250332821296, guid: a6f2eef6a1ceacf419fd2cc613d52caf, type: 3}
   - {fileID: 3408874302525549751, guid: 6eb366ca25adc3a47b43ebc955cf1b99, type: 3}
   - {fileID: 2249068364138520030, guid: fd8d09576b5b65c438227d5661037790, type: 3}
+  maxAnimals: 10
+  spawnedAnimals: 0
   waitForNextSpawn: 10
   countdown: 10
 --- !u!4 &1067377413

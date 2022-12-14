@@ -20,9 +20,11 @@ public class Eating : MonoBehaviour
 
     private AudioSource animalAudio;
 
+    [SerializeField] private GameObject bloodParticle;
+
     private void Start()
     {
-        dragonController.GetComponent<DragonController>();
+        //dragonController.GetComponent<DragonController>();
         villagerManager = GameObject.FindObjectOfType<VillagerManager>();
     }
     private void Update()
@@ -68,13 +70,15 @@ public class Eating : MonoBehaviour
                 {
                     Debug.Log("Ate an animal!");
 
+                    GameObject instantiatedParticle = GameObject.Instantiate(bloodParticle);
+                    instantiatedParticle.transform.position = collision.transform.position;
+
                     Destroy(collision.gameObject);
 
                     dragonEnergy.Eat();
                     nextAttack = attackRate;
                     PlayRandomSound();
-                    collision.GetComponentInParent<AnimalSpawner>().EatenAnimal();
-
+                    collision.GetComponentInParent<AnimalSpawner>().EatenAnimal();                    
                 }
                 else if (collision.gameObject.tag == "Villager")
                 {
@@ -85,6 +89,9 @@ public class Eating : MonoBehaviour
                     if (villager.Get_CurrentHealth() <= 0)
                     {
                         Debug.Log("Ate a villager!");
+
+                        GameObject instantiatedParticle = GameObject.Instantiate(bloodParticle);
+                        instantiatedParticle.transform.position = collision.transform.position;
 
                         dragonEnergy.Eat();
                         villager.Die();

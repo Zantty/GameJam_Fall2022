@@ -134,6 +134,8 @@ MonoBehaviour:
   dead: 0
   safeZoneBorder: {fileID: 0}
   cloudLayer: {fileID: 0}
+  flyingParticle: {fileID: 2998834020070650951, guid: 71f62bc2a67c06749abf0b16463d5d5b, type: 3}
+  landingParticle: {fileID: 2998834020070650951, guid: 631953a20ced1084c9c957f5d0c878d7, type: 3}
 --- !u!114 &8646708031413925834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,10 +193,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragonEnergy: {fileID: 272956219}
+  villagerManager: {fileID: 0}
+  dragonController: {fileID: 0}
   dragonDamage: 5
   attackRate: 1
   eatingAudio: {fileID: 0}
   eatingSounds: []
+  bloodParticle: {fileID: 2998834020070650951, guid: 0a10e2fe17605ae458d646afebef78c8, type: 3}
 --- !u!114 &272956219
 MonoBehaviour:
   m_ObjectHideFlags: 0
