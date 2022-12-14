@@ -29,6 +29,10 @@ public class DragonHealth : MonoBehaviour
         {
             Die();
         }
+        else if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     void Die()

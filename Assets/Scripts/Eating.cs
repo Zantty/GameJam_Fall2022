@@ -15,6 +15,10 @@ public class Eating : MonoBehaviour
     public float attackRate = 1;    // seconds
     float nextAttack = 0;
 
+    public float regenerationAmount = 10;
+
+    [Space(10)]
+
     public AudioSource eatingAudio;
     public AudioClip[] eatingSounds;
 
@@ -76,6 +80,7 @@ public class Eating : MonoBehaviour
                     Destroy(collision.gameObject);
 
                     dragonEnergy.Eat();
+                    GetComponent<DragonHealth>().AddDamage(-regenerationAmount);
                     nextAttack = attackRate;
                     PlayRandomSound();
                     collision.GetComponentInParent<AnimalSpawner>().EatenAnimal();                    
