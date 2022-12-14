@@ -44,10 +44,12 @@ public class DragonController : MonoBehaviour
             if(flying)
             {
                 gameObject.layer = flyingLayerIndex;
+                GetComponent<DragonFlying_Visual>().Set_FlyStatus(true);
             }
             else
             {
                 gameObject.layer = 0;
+                GetComponent<DragonFlying_Visual>().Set_FlyStatus(false);
             }
         }
 
