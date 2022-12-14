@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: daaf7bb57650d164bb0571a979d5ccbe
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Love Glitch Personal Use
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 20dbb9fa7e59b1248bf87e08b11d834f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
