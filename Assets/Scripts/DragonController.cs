@@ -18,6 +18,7 @@ public class DragonController : MonoBehaviour
     public bool dead;
 
     public GameObject safeZoneBorder;
+    public GameObject cloudLayer;
     void Start()
     {
         myAnim = GetComponent<Animator>();
@@ -53,11 +54,13 @@ public class DragonController : MonoBehaviour
         if (flying)
         {
             safeZoneBorder.SetActive(false);
+            cloudLayer.SetActive(true);
         }
 
         if(!flying)
         {
             safeZoneBorder.SetActive(true);
+            cloudLayer.SetActive(false);
         }
     }
 }

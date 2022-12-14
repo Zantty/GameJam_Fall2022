@@ -13,6 +13,11 @@ public class Eating : MonoBehaviour
     public float attackRate = 1;    // seconds
     float nextAttack = 0;
 
+    public AudioSource eatingAudio;
+    public AudioClip[] eatingSounds;
+
+    private AudioSource animalAudio;
+
     private void Update()
     {
         if(nextAttack > 0)
@@ -29,9 +34,13 @@ public class Eating : MonoBehaviour
             {
                 Debug.Log("Ate an animal!");
 
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
+
                 dragonEnergy.Eat();
                 nextAttack = attackRate;
+                PlayRandomSound();
+                animalAudio = collision.GetComponent<AudioSource>();
+                animalAudio.Play();
             }
             else if (collision.gameObject.tag == "Villager")
             {
@@ -45,10 +54,17 @@ public class Eating : MonoBehaviour
 
                     dragonEnergy.Eat();
                     villager.Die();
+                    PlayRandomSound();
                 }
                 nextAttack = attackRate;
             }
         }
         
+    }
+
+    void PlayRandomSound()
+    {
+        eatingAudio.clip = eatingSounds[Random.Range(0, eatingSounds.Length)];
+        eatingAudio.Play();
     }
 }
