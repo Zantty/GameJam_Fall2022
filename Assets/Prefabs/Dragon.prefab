@@ -133,6 +133,7 @@ MonoBehaviour:
   flyingLayerIndex: 3
   dead: 0
   safeZoneBorder: {fileID: 0}
+  cloudLayer: {fileID: 0}
 --- !u!114 &8646708031413925834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +193,8 @@ MonoBehaviour:
   dragonEnergy: {fileID: 272956219}
   dragonDamage: 5
   attackRate: 1
+  eatingAudio: {fileID: 0}
+  eatingSounds: []
 --- !u!114 &272956219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +213,7 @@ MonoBehaviour:
   minEnergy: 0
   currentEnergy: 0
   replenishAmount: 15
+  healthDecreaseAmount: 5
 --- !u!1 &3831354028074431015
 GameObject:
   m_ObjectHideFlags: 0

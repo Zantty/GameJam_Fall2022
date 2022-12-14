@@ -8,6 +8,8 @@ public class DragonEnergy : MonoBehaviour
     public DragonController dragon;
     public Slider energySlider;
 
+    private DragonHealth health;
+
     public float maxEnergy;
     public float minEnergy;
     public float currentEnergy;
@@ -16,6 +18,7 @@ public class DragonEnergy : MonoBehaviour
     public const float decreaseAmountFlying = 2.0f;
 
     public float replenishAmount;
+    public float healthDecreaseAmount = 1;
 
     bool incapacitated = false;
 
@@ -24,6 +27,8 @@ public class DragonEnergy : MonoBehaviour
     {
         currentEnergy = maxEnergy / 2;
         energySlider.value = currentEnergy;
+
+        health = GetComponent<DragonHealth>();
     }
 
     // Update is called once per frame
@@ -53,6 +58,11 @@ public class DragonEnergy : MonoBehaviour
             dragon.movementSpeed = dragon.fatMovementSpeed;
             dragon.flying = false;
             incapacitated = true;
+        }
+
+        if(currentEnergy <= 0)
+        {
+            health.AddDamage(healthDecreaseAmount * Time.deltaTime);
         }
     }
 
