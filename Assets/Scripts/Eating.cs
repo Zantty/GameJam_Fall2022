@@ -34,13 +34,12 @@ public class Eating : MonoBehaviour
             {
                 Debug.Log("Ate an animal!");
 
-                //Destroy(collision.gameObject);
+                Destroy(collision.gameObject);
 
                 dragonEnergy.Eat();
                 nextAttack = attackRate;
                 PlayRandomSound();
-                animalAudio = collision.GetComponent<AudioSource>();
-                animalAudio.Play();
+                
             }
             else if (collision.gameObject.tag == "Villager")
             {
