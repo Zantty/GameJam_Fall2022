@@ -7,6 +7,7 @@ public class Eating : MonoBehaviour
     public DragonEnergy dragonEnergy;
     public VillagerManager villagerManager;
     public DragonController dragonController;
+    public GoldPickup goldPickup;
 
     [Space(10)]
 
@@ -66,7 +67,7 @@ public class Eating : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (!dragonController.flying)
+        if (!dragonController.flying || !goldPickup.carrying)
         {
             if (Input.GetKey(KeyCode.E) && nextAttack <= 0)
             {

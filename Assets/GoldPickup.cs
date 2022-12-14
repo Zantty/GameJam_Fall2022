@@ -10,7 +10,8 @@ public class GoldPickup : MonoBehaviour
     public int goldScore = 0;
     public int maxScore;
     public SafeZone safeZone;
-    [SerializeField] bool carrying;
+    public bool carrying;
+    bool triggered;
     [SerializeField] GameObject player;
     [SerializeField] GameObject gold;
     [SerializeField] TMP_Text goldScoreText;
@@ -28,7 +29,7 @@ public class GoldPickup : MonoBehaviour
     {
         if (!dragonController.flying)
         {
-            if (collision.gameObject.tag == "Gold") 
+            if (collision.gameObject.tag == "Gold")
             {
                 collision.gameObject.GetComponent<Villager_Visual>().Toggle_Highlight(true);
             }
@@ -54,23 +55,25 @@ public class GoldPickup : MonoBehaviour
         {
             if (!dragonController.flying)
             {
-                if (Input.GetKey(KeyCode.E))
+                if (!carrying)
                 {
-                    if (!carrying)
-                    {
-                        gold = collision.gameObject;
-                        carrying = true;
-                        gold.transform.parent = player.transform;
-                        Debug.Log("Picked up some gold!");
+                    gold = collision.gameObject;
 
-                    }
+                    gold.transform.parent = player.transform;
+                    Debug.Log("Picked up some gold!");
                 }
-            }
-            else
-            {
-                Debug.Log("Cannot pick up gold while flying.");
-            }
+                if (carrying)
+                {
+                    gold.transform.SetParent(null);
+                    Debug.Log("Dropped some gold.");
+                }                                                    
         }
+        else
+        {
+            Debug.Log("Cannot pick up gold while flying.");
+        }
+    }
+
         if(collision.gameObject.tag == "SafeZone")
         {
             if (Input.GetKey(KeyCode.E))
@@ -84,6 +87,7 @@ public class GoldPickup : MonoBehaviour
             }
         }
     }
+
 
     public void ScoreGold()
     {
@@ -103,5 +107,33 @@ public class GoldPickup : MonoBehaviour
         {
             win = true;
         }
+
+        if (triggered)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (!carrying)
+                {
+                    carrying = true;
+                }
+                if (carrying)
+                {
+                    carrying = false;
+                }
+            }
+        }
+    }
+
+    void PickUpAndDrop()
+    {
+        if (carrying)
+        {
+            carrying = false;
+        }
+        if (!carrying)
+        {
+            carrying = true;
+        }
     }
 }
+
