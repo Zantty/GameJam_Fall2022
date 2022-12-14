@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -8879665963259040789}
   - component: {fileID: -2596107350736389655}
   - component: {fileID: -482812574901301243}
+  - component: {fileID: 1995392809284877951}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Animal
@@ -164,6 +165,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightColor: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
   highlightElement: {fileID: 8156024781578313259}
+--- !u!58 &1995392809284877951
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3408874302525549751}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.35
 --- !u!1 &6581511250117230188
 GameObject:
   m_ObjectHideFlags: 0

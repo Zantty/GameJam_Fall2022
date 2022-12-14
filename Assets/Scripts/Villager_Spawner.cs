@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Villager_Spawner : MonoBehaviour
 {
+    public VillagerManager villagerManager;
     public float spawnRate = 5;     // seconds
     float nextSpawn = 0;
+    public float maxVillagers;
     [Tooltip("Should always be less than spawnRate")]    public float spawnRandomness = 1;
     public float spawnDistance = 1;
 
@@ -20,14 +22,23 @@ public class Villager_Spawner : MonoBehaviour
     void Start()
     {
         nextSpawn = spawnRate;
+        villagerManager = GameObject.FindObjectOfType<VillagerManager>();
     }
 
     void Update()
     {
         if(nextSpawn <= 0)
         {
-            SpawnVillagers();
-            nextSpawn = spawnRate + Random.Range(-spawnRandomness, spawnRandomness);
+            if(villagerManager.currentVillagers <= villagerManager.maxVillagers)
+            {
+                SpawnVillagers();
+                nextSpawn = spawnRate + Random.Range(-spawnRandomness, spawnRandomness);
+                villagerManager.IncreaseVillagers();
+            }
+            else
+            {
+                Debug.Log("Reached the max number of spawned villagers.");
+            }
         }
         else
         {

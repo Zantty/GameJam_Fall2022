@@ -53,6 +53,10 @@ public class DragonEnergy : MonoBehaviour
         {
             incapacitated = true;
         }
+        if(currentEnergy >= minEnergy)
+        {
+            incapacitated = false;
+        }
         if(currentEnergy >= maxEnergy)
         {
             dragon.movementSpeed = dragon.fatMovementSpeed;

@@ -55,13 +55,13 @@ public class DragonController : MonoBehaviour
 
         if (flying)
         {
-            safeZoneBorder.SetActive(false);
+          //safeZoneBorder.SetActive(false);
             cloudLayer.SetActive(true);
         }
 
         if(!flying)
         {
-            safeZoneBorder.SetActive(true);
+         // safeZoneBorder.SetActive(true);
             cloudLayer.SetActive(false);
         }
     }

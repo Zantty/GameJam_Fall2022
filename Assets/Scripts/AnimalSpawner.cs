@@ -8,6 +8,9 @@ public class AnimalSpawner : MonoBehaviour
     public GameObject[] animals;
     GameObject currentAnimal;
 
+    public int maxAnimals = 10;
+    public int spawnedAnimals = 0;
+
     public float waitForNextSpawn;
     public float countdown;
 
@@ -24,7 +27,21 @@ public class AnimalSpawner : MonoBehaviour
 
     void SpawnAnimal()
     {
-        GameObject animal = animals[Random.Range(0, animals.Length)];
-        Instantiate(animal, spawnPoint);
+        if(spawnedAnimals < maxAnimals)
+        {
+            GameObject animal = animals[Random.Range(0, animals.Length)];
+            Instantiate(animal, spawnPoint);
+            spawnedAnimals++;
+        }
+        else if (spawnedAnimals == maxAnimals)
+        {
+            Debug.Log("Reached the maximum number of spawned animals.");
+        }
+        
+    }
+
+    public void EatenAnimal()
+    {
+        spawnedAnimals--;
     }
 }

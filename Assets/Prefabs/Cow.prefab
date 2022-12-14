@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8902274394796657200}
   - component: {fileID: 1484421981485324525}
   - component: {fileID: 5424406088525106894}
+  - component: {fileID: 5366885881068163715}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Animal
@@ -164,6 +165,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightColor: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
   highlightElement: {fileID: 6309293108011524297}
+--- !u!58 &5366885881068163715
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2249068364138520030}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.35
 --- !u!1 &6309293108011524297
 GameObject:
   m_ObjectHideFlags: 0
