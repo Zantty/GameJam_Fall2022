@@ -24,7 +24,7 @@ public class GoldSpawner : MonoBehaviour
 
     void SpawnGold()
     {
-        GameObject gold = Instantiate(goldPrefab) as GameObject;
-        gold.transform.position = new Vector2(Random.Range(xMax, xMax), Random.Range(yMin, yMax));
+        Vector2 pos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+        Instantiate(goldPrefab, pos, Quaternion.identity);
     }
 }
