@@ -10878,6 +10878,10 @@ PrefabInstance:
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 272956218, guid: b2720bbcafe1cd24d92d2b026fe22b13, type: 3}
+      propertyPath: goldPickup
+      value: 
+      objectReference: {fileID: 272956223}
+    - target: {fileID: 272956218, guid: b2720bbcafe1cd24d92d2b026fe22b13, type: 3}
       propertyPath: eatingAudio
       value: 
       objectReference: {fileID: 272956234}
