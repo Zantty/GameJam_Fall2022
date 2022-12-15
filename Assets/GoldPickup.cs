@@ -111,7 +111,7 @@ public class GoldPickup : MonoBehaviour
 
     private void Update()
     {
-        goldScoreText.text = goldScore.ToString();
+        goldScoreText.text = goldScore.ToString() + "/10";
         if (goldScore >= maxScore)
         {
             win = true;

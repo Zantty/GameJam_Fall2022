@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   engagementState: 2
-  movementSpeed: 20
+  movementSpeed: 25
   rotationSpeed: 1
   canRoam: 1
   detectionDistance: 25
