@@ -15,7 +15,7 @@ public class DragonEnergy : MonoBehaviour
     public float minEnergy;
     public float currentEnergy;
 
-    public const float decreaseAmount = 1.0f;
+    public const float decreaseAmount = 1.5f;
     public const float decreaseAmountFlying = 2.0f;
 
     public float replenishAmount;

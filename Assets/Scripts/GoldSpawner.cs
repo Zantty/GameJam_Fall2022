@@ -6,6 +6,8 @@ public class GoldSpawner : MonoBehaviour
 {
     public GameObject goldPrefab;
 
+    public int spawnAmount;
+
     [Header("X Value Spawn Range")]
     public float xMin;
     public float xMax;
@@ -16,7 +18,7 @@ public class GoldSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < spawnAmount; i++)
         {
             SpawnGold();
         }
