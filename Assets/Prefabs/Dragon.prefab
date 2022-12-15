@@ -196,6 +196,7 @@ MonoBehaviour:
   dragonEnergy: {fileID: 272956219}
   villagerManager: {fileID: 0}
   dragonController: {fileID: 0}
+  goldPickup: {fileID: 0}
   dragonDamage: 5
   attackRate: 1
   regenerationAmount: 10
@@ -222,6 +223,7 @@ MonoBehaviour:
   replenishAmount: 15
   healthDecreaseAmount: 5
   warningText: {fileID: 0}
+  spriteAnim: {fileID: 0}
 --- !u!114 &5912532812118219638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,12 +245,21 @@ MonoBehaviour:
   - {fileID: -312955300, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
   landingSprites:
   - {fileID: -1777077401, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
-  normalIdleSprites: []
-  fatIdleSprites: []
-  skinnyIdleSprites: []
-  normalMovementSprites: []
-  fatMovementSprites: []
-  skinnyMovementSprites: []
+  normalIdleSprites:
+  - {fileID: 928311367, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  fatIdleSprites:
+  - {fileID: 344035563, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  skinnyIdleSprites:
+  - {fileID: -1490414123, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  normalMovementSprites:
+  - {fileID: -1869681880, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  - {fileID: 1228186804, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  fatMovementSprites:
+  - {fileID: -1498669090, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  - {fileID: 1138959733, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  skinnyMovementSprites:
+  - {fileID: -1367319046, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  - {fileID: -454426367, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
   frameRate: 0.5
   animationState: 0
 --- !u!1 &3831354028074431015

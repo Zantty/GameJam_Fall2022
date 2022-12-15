@@ -8,6 +8,11 @@ public enum AnimationState
     IDLE , MOVE , FLY , LANDING
 }
 
+public enum DragonStatus
+{
+    NORMAL , FAT , SKINNY
+}
+
 public class SpriteAnimation : MonoBehaviour
 {
     [Header("Animations Sprites")]
@@ -33,6 +38,8 @@ public class SpriteAnimation : MonoBehaviour
     public List<Sprite> normalMovementSprites;
     public List<Sprite> fatMovementSprites;
     public List<Sprite> skinnyMovementSprites;
+
+    DragonStatus dragonStatus = DragonStatus.SKINNY;
 
     [Space(10)]
 
@@ -75,6 +82,39 @@ public class SpriteAnimation : MonoBehaviour
     {
         spriteRenderer.flipX = flip;
     }
+
+    public void UpdateDragonSprites(DragonStatus status)
+    {
+        if(status == dragonStatus)
+        {
+            return;
+        }
+
+        dragonStatus = status;
+        switch(dragonStatus)
+        {
+            case DragonStatus.NORMAL:
+                {
+                    idleSprites = new List<Sprite>(normalIdleSprites);
+                    movementSprites = new List<Sprite>(normalMovementSprites);
+                    break;
+                }
+            case DragonStatus.FAT:
+                {
+                    idleSprites = new List<Sprite>(fatIdleSprites);
+                    movementSprites = new List<Sprite>(fatMovementSprites);
+                    break;
+                }
+            case DragonStatus.SKINNY:
+                {
+                    idleSprites = new List<Sprite>(skinnyIdleSprites);
+                    movementSprites = new List<Sprite>(skinnyMovementSprites);
+                    break;
+                }
+        }
+        UpdateAnimation(animationState);
+    }
+
 
     private void Start()
     {

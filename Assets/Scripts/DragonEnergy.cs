@@ -25,6 +25,10 @@ public class DragonEnergy : MonoBehaviour
 
     public TMP_Text warningText;
 
+    [SerializeField] private SpriteAnimation spriteAnim;
+    public float fatThreshhold = 80;
+    public float skinnyThreshhold = 20;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,7 @@ public class DragonEnergy : MonoBehaviour
         energySlider.value = currentEnergy;
 
         health = GetComponent<DragonHealth>();
+        spriteAnim = GetComponent<SpriteAnimation>();
     }
 
     // Update is called once per frame
@@ -61,8 +66,9 @@ public class DragonEnergy : MonoBehaviour
         if(currentEnergy >= minEnergy)
         {
             incapacitated = false;
+
         }
-        if(currentEnergy >= maxEnergy)
+        if (currentEnergy >= maxEnergy)
         {
             dragon.movementSpeed = dragon.fatMovementSpeed;
             dragon.flying = false;
@@ -70,9 +76,22 @@ public class DragonEnergy : MonoBehaviour
             StartCoroutine(IncapacitatedIndicator());
         }
 
-        if(currentEnergy <= 0)
+        if (currentEnergy <= 0)
         {
             health.AddDamage(healthDecreaseAmount * Time.deltaTime);
+        }
+
+        if(currentEnergy < skinnyThreshhold)
+        {
+            spriteAnim.UpdateDragonSprites(DragonStatus.SKINNY);
+        }
+        else if(currentEnergy > fatThreshhold)
+        {
+            spriteAnim.UpdateDragonSprites(DragonStatus.FAT);
+        }
+        else
+        {
+            spriteAnim.UpdateDragonSprites(DragonStatus.NORMAL);
         }
     }
 
