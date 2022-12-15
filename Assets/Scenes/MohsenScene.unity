@@ -3665,6 +3665,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1319346653}
     m_Modifications:
+    - target: {fileID: 962097821, guid: 120ee512eb00ffb47b4d5b107839aea3, type: 3}
+      propertyPath: gameUI
+      value: 
+      objectReference: {fileID: 1085979200}
     - target: {fileID: 279391654937124976, guid: 120ee512eb00ffb47b4d5b107839aea3, type: 3}
       propertyPath: m_Name
       value: Pause Menu
