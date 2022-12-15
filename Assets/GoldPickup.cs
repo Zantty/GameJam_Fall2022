@@ -30,6 +30,7 @@ public class GoldPickup : MonoBehaviour
         player = this.gameObject;
         goldScoreText.text = goldScore.ToString();
         winScreen.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -116,9 +117,10 @@ public class GoldPickup : MonoBehaviour
         goldScoreText.text = goldScore.ToString() + "/10";
         if (goldScore >= maxScore)
         {
+            Time.timeScale = 0f;
             win = true;
             winScreen.SetActive(true);
-            dayCountTotal.text = dayCycle.currentDay.ToString();
+            dayCountTotal.text = "Krogar Survived" + dayCycle.currentDay.ToString() + "Days.";
         }
 
         if (Input.GetKeyDown(KeyCode.E) && !dragonController.flying)
