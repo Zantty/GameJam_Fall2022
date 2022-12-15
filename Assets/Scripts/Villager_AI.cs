@@ -116,7 +116,7 @@ public class Villager_AI : MonoBehaviour
                     }
                 case EngagementState.RUN_AWAY:
                     {
-                        destination = (transform.position - target.position).normalized * 100f;
+                        destination = (transform.position - target.position).normalized * 10f;
                         rigidbody.velocity = (destination - transform.position).normalized * movementSpeed;
                         break;
                     }

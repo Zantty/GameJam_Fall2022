@@ -84,7 +84,10 @@ public class Eating : MonoBehaviour
                     GetComponent<DragonHealth>().AddDamage(-regenerationAmount);
                     nextAttack = attackRate;
                     PlayRandomSound();
-                    collision.GetComponentInParent<AnimalSpawner>().EatenAnimal();                    
+                    if(collision.GetComponentInParent<AnimalSpawner>())
+                    {
+                        collision.GetComponentInParent<AnimalSpawner>().EatenAnimal();
+                    }
                 }
                 else if (collision.gameObject.tag == "Villager")
                 {

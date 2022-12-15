@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 1189686403420804590}
   - component: {fileID: 7492038238065022943}
   m_Layer: 0
-  m_Name: Villagers
+  m_Name: Villager_F
   m_TagString: Villager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 6315168607434255628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.75, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 12.5, y: 12.5, z: 12.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7442559608812521290}
@@ -216,12 +216,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1078967964, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  m_Sprite: {fileID: -1524956178, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.55, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -266,10 +266,10 @@ MonoBehaviour:
   canRoam: 1
   detectionDistance: 75
   maxDetectionDistance: 100
-  minimumDistance: 10
+  minimumDistance: 15
   roamingRadius: 30
   waitingTime: 2
-  attackDistance: 10
+  attackDistance: 15
   attackDamage: 15
   attackRate: 2
 --- !u!114 &4068985223999241093
@@ -289,7 +289,9 @@ MonoBehaviour:
   maxVillagers: 0
   spawnRandomness: 10
   spawnDistance: 1
-  spawnPrefab: {fileID: 6315168607434255628}
+  spawnPrefabs:
+  - {fileID: 6315168607434255628}
+  - {fileID: 6315168607434255628, guid: 1fd85bc13a9ec89409c0d6b2d7e8693f, type: 3}
 --- !u!114 &2322933000394630943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,8 +326,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.08, y: 1.03}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.66, y: 1.16}
+    newSize: {x: 0.55, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
@@ -360,10 +362,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSprites:
-  - {fileID: 1078967964, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  - {fileID: -1524956178, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
   movementSprites:
-  - {fileID: -1752241538, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
-  - {fileID: -1592393936, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  - {fileID: -830328831, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
+  - {fileID: -900842870, guid: 9b360905f5259d1448f1ca746186c612, type: 3}
   flyingSprites: []
   landingSprites: []
   normalIdleSprites: []
@@ -485,15 +487,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6331924642860259671, guid: 05773f02f56b6fc4c835acf9d5204bac, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6331924642860259671, guid: 05773f02f56b6fc4c835acf9d5204bac, type: 3}
       propertyPath: m_Color.g
-      value: 0.21767966
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6331924642860259671, guid: 05773f02f56b6fc4c835acf9d5204bac, type: 3}
       propertyPath: m_Color.r
-      value: 0.5568628
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6331924642973607665, guid: 05773f02f56b6fc4c835acf9d5204bac, type: 3}
       propertyPath: m_Color.b

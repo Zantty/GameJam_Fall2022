@@ -11,11 +11,11 @@ public class Villager_Spawner : MonoBehaviour
     [Tooltip("Should always be less than spawnRate")]    public float spawnRandomness = 1;
     public float spawnDistance = 1;
 
-    [SerializeField]    private GameObject spawnPrefab;
+    [SerializeField]    private GameObject[] spawnPrefabs;
 
     public void SpawnVillagers()
     {
-        GameObject spawnedPrefab = GameObject.Instantiate(spawnPrefab);
+        GameObject spawnedPrefab = GameObject.Instantiate(spawnPrefabs[Random.Range(0, spawnPrefabs.Length)]);
         spawnedPrefab.transform.position = transform.position + ((Vector3)Random.insideUnitCircle * spawnDistance);
     }
 
