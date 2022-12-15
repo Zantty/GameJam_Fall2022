@@ -56,18 +56,26 @@ public class GoldPickup : MonoBehaviour
         {
             if (!dragonController.flying)
             {
-                if (!carrying)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    gold = collision.gameObject;
-
-                    gold.transform.parent = player.transform;
-                    Debug.Log("Picked up some gold!");
+                    if (!carrying)
+                    {
+                        gold = collision.gameObject;
+                        carrying = true;
+                        gold.transform.parent = player.transform;
+                        Debug.Log("Picked up some gold!");
+                    }
                 }
-                if (carrying)
+                if (Input.GetKeyUp(KeyCode.E))
                 {
-                    gold.transform.SetParent(null);
-                    Debug.Log("Dropped some gold.");
-                }                                                    
+                    if (carrying)
+                    {
+                        carrying = false;
+                        gold.transform.SetParent(null);
+                        Debug.Log("Dropped some gold.");
+                    }
+                }                           
+                                                                  
         }
         else
         {
@@ -123,18 +131,6 @@ public class GoldPickup : MonoBehaviour
                     carrying = false;
                 }
             }
-        }
-    }
-
-    void PickUpAndDrop()
-    {
-        if (carrying)
-        {
-            carrying = false;
-        }
-        if (!carrying)
-        {
-            carrying = true;
         }
     }
 }

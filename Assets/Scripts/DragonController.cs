@@ -25,6 +25,11 @@ public class DragonController : MonoBehaviour
     [SerializeField] private GameObject flyingParticle;
     [SerializeField] private GameObject landingParticle;
 
+    bool walking = true;
+
+    public AudioSource walkingAudio;
+    public AudioSource flyingAudio;
+    public AudioSource landingAudio;
 
     void Start()
     {
@@ -43,6 +48,14 @@ public class DragonController : MonoBehaviour
 
         if(inputValues.magnitude > 0.1f)
         {
+            walking = true;
+            if (walking && !flying)
+            {
+                if (!walkingAudio.isPlaying)
+                {
+                    walkingAudio.Play();
+                }
+            }
             //transform.up = Vector3.Lerp(transform.up, rigidbody.velocity.normalized, rotationSpeed * Time.deltaTime);
 
             spriteAnim.FlipSprite(true ? inputValues.x < 0 : false);
@@ -72,6 +85,7 @@ public class DragonController : MonoBehaviour
             else
             {
                 spriteAnim.UpdateAnimation(AnimationState.IDLE);
+                walking = false;
             }
         }
 
@@ -98,12 +112,14 @@ public class DragonController : MonoBehaviour
         {
           //safeZoneBorder.SetActive(false);
             cloudLayer.SetActive(true);
+            flyingAudio.Play();
         }
 
         if(!flying)
         {
          // safeZoneBorder.SetActive(true);
             cloudLayer.SetActive(false);
+            flyingAudio.Stop();
         }
     }
 
@@ -115,5 +131,6 @@ public class DragonController : MonoBehaviour
         flying = false;
         isLanding = false;
         GameObject.Instantiate(landingParticle, transform);
+        landingAudio.Play();
     }
 }
