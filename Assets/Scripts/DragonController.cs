@@ -112,14 +112,14 @@ public class DragonController : MonoBehaviour
         {
           //safeZoneBorder.SetActive(false);
             cloudLayer.SetActive(true);
-            flyingAudio.Play();
+            //flyingAudio.Play();
         }
 
         if(!flying)
         {
          // safeZoneBorder.SetActive(true);
             cloudLayer.SetActive(false);
-            flyingAudio.Stop();
+            //flyingAudio.Stop();
         }
     }
 
