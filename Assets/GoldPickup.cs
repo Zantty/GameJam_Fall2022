@@ -6,6 +6,7 @@ using TMPro;
 public class GoldPickup : MonoBehaviour
 {
     public DragonController dragonController;
+    public DayCycle dayCycle;
 
     public int goldScore = 0;
     public int maxScore;
@@ -15,12 +16,13 @@ public class GoldPickup : MonoBehaviour
     [SerializeField] GameObject goldInRange;
     GameObject goldCarrying = null;
     [SerializeField] TMP_Text goldScoreText;
+    [SerializeField] TMP_Text dayCountTotal;
     [SerializeField] private GameObject winScreen;
     bool inSafeZone = false;
 
     [SerializeField] private GameObject scoreParticle;
 
-    bool win = false;
+    public bool win = false;
 
     private void Start()
     {
@@ -116,7 +118,7 @@ public class GoldPickup : MonoBehaviour
         {
             win = true;
             winScreen.SetActive(true);
-          
+            dayCountTotal.text = dayCycle.currentDay.ToString();
         }
 
         if (Input.GetKeyDown(KeyCode.E) && !dragonController.flying)

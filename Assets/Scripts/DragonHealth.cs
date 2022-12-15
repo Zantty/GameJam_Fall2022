@@ -13,6 +13,8 @@ public class DragonHealth : MonoBehaviour
 
     [SerializeField] private GameObject bloodParticle;
 
+    public bool dead;
+
     private void Start()
     {
         currentHealth = maxHealth;

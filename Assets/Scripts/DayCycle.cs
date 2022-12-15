@@ -17,7 +17,7 @@ public class DayCycle : MonoBehaviour
     public float dayDuration;
     float nextDay;
 
-    int currentDay = 1;
+    public int currentDay = 1;
     public List<DaySettings> daySettings;
 
     private Light2D globalLight;
@@ -52,7 +52,7 @@ public class DayCycle : MonoBehaviour
         }
     }
 
-
+    public GoldPickup goldPickup;
     private void Start()
     {
         globalLight = GetComponent<Light2D>();
@@ -63,16 +63,19 @@ public class DayCycle : MonoBehaviour
 
     private void Update()
     {
-        if(nextDay <= 0)
+        if (goldPickup.win)
         {
-            currentDay++;
-            nextDay = dayDuration;
-            Update_UI();
-        }
-        else
-        {
-            nextDay -= Time.deltaTime;
-        }
-        Update_Day();
+            if (nextDay <= 0)
+            {
+                currentDay++;
+                nextDay = dayDuration;
+                Update_UI();
+            }
+            else
+            {
+                nextDay -= Time.deltaTime;
+            }
+            Update_Day();
+        }      
     }
 }

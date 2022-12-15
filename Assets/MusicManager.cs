@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
+    [SerializeField] private DragonHealth dragonHealth;
     [SerializeField] private AudioSource musicAudioSource;
     [SerializeField] private AudioClip[] music;
+
+    public bool dead;
     private AudioClip currentMusic;
     
     // Start is called before the first frame update
@@ -68,6 +71,17 @@ public class MusicManager : MonoBehaviour
             else
             {
                 currentMusic = music[0];
+                musicAudioSource.clip = currentMusic;
+                musicAudioSource.Play();
+            }
+        }
+
+        if (dragonHealth.dead)
+        {
+            musicAudioSource.Stop();
+            if (!musicAudioSource.isPlaying)
+            {
+                currentMusic = music[3];
                 musicAudioSource.clip = currentMusic;
                 musicAudioSource.Play();
             }

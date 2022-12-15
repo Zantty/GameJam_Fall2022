@@ -48,6 +48,11 @@ public class Villager_AI : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         dragon = GameObject.FindGameObjectWithTag("Player").transform;
+        if (dragon == null)
+        {
+            Debug.Log("Dragon could not be found.");
+        }
+       
         destination = transform.position;
 
         spriteAnim = GetComponent<SpriteAnimation>();
