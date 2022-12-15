@@ -95,6 +95,7 @@ public class DragonController : MonoBehaviour
             {
                 flying = true;
                 gameObject.layer = flyingLayerIndex;
+                flyingAudio.Play();
                 GetComponent<DragonFlying_Visual>().Set_FlyStatus(true);
 
                 GameObject instantiatedParticle = GameObject.Instantiate(flyingParticle);
@@ -112,14 +113,14 @@ public class DragonController : MonoBehaviour
         {
           //safeZoneBorder.SetActive(false);
             cloudLayer.SetActive(true);
-            //flyingAudio.Play();
+          //flyingAudio.Play();
         }
 
         if(!flying)
         {
          // safeZoneBorder.SetActive(true);
             cloudLayer.SetActive(false);
-            //flyingAudio.Stop();
+            flyingAudio.Stop();
         }
     }
 
@@ -128,6 +129,7 @@ public class DragonController : MonoBehaviour
         isLanding = true;
         yield return new WaitForSeconds(0.75f);
 
+        flyingAudio.Stop();
         flying = false;
         isLanding = false;
         GameObject.Instantiate(landingParticle, transform);

@@ -133,5 +133,17 @@ public class GoldPickup : MonoBehaviour
             }
         }
     }
+
+    void PickUpAndDrop()
+    {
+        if (carrying)
+        {
+            carrying = false;
+        }
+        if (!carrying)
+        {
+            carrying = true;
+        }
+    }
 }
 

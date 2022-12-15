@@ -58,22 +58,37 @@ public class DragonEnergy : MonoBehaviour
 
         energySlider.value = currentEnergy;
 
+        if(currentEnergy <= 25f)
+        {
+            warningText.text = "You are getting hungry!";
+            warningText.enabled = true;
+        }
+        if (currentEnergy >= 75)
+        {
+            warningText.text = "You are getting too full!";
+            warningText.enabled = true;
+        }
         if (currentEnergy <= minEnergy)
         {
             incapacitated = true;
-            StartCoroutine(IncapacitatedIndicator());
+            warningText.text = "You are starving.";
+            warningText.enabled = true;
         }
         if(currentEnergy >= minEnergy)
         {
             incapacitated = false;
-
+        }
+        if(currentEnergy >= 25f && currentEnergy <= 75f)
+        {
+            warningText.enabled = false;
         }
         if (currentEnergy >= maxEnergy)
         {
             dragon.movementSpeed = dragon.fatMovementSpeed;
             dragon.flying = false;
             incapacitated = true;
-            StartCoroutine(IncapacitatedIndicator());
+            warningText.text = "You are too full...";
+            warningText.enabled = true;
         }
 
         if (currentEnergy <= 0)
@@ -100,7 +115,7 @@ public class DragonEnergy : MonoBehaviour
         currentEnergy += replenishAmount;
     }
 
-    IEnumerator IncapacitatedIndicator()
+  /*IEnumerator IncapacitatedIndicator()
     {
         if (currentEnergy <= minEnergy)
         {
@@ -116,5 +131,5 @@ public class DragonEnergy : MonoBehaviour
             yield return new WaitForSeconds(3.0f);
             warningText.enabled = false;
         }
-    }
+    }*/
 }
