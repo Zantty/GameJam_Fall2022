@@ -11,11 +11,12 @@ public class GoldPickup : MonoBehaviour
     public int maxScore;
     public SafeZone safeZone;
     public bool carrying;
-    bool triggered;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject gold;
+    [SerializeField] GameObject goldInRange;
+    GameObject goldCarrying = null;
     [SerializeField] TMP_Text goldScoreText;
     [SerializeField] private GameObject winScreen;
+    bool inSafeZone = false;
 
     bool win = false;
 
@@ -32,6 +33,7 @@ public class GoldPickup : MonoBehaviour
         {
             if (collision.gameObject.tag == "Gold")
             {
+                goldInRange = collision.gameObject;
                 collision.gameObject.GetComponent<Villager_Visual>().Toggle_Highlight(true);
             }
         }
@@ -44,55 +46,51 @@ public class GoldPickup : MonoBehaviour
         {
             if (collision.gameObject.tag == "Gold")
             {
-                triggered = false;
+                goldInRange = null;
                 collision.gameObject.GetComponent<Villager_Visual>().Toggle_Highlight(false);
             }
+        }
+        if(collision.gameObject.tag == "SafeZone")
+        {
+            inSafeZone = false;
         }
 
     }
 
     public void OnTriggerStay2D(Collider2D collision)
     {
+        /*
         if (collision.gameObject.tag == "Gold")
         {
-            triggered = true;
             if (!dragonController.flying)
             {
                 if (Input.GetKey(KeyCode.E))
-                {                   
-                   if (!carrying)
-                   {
+                {
+                    if (!carrying)
+                    {
                         gold = collision.gameObject;
-                         //   carrying = true;
+                        //   carrying = true;
                         gold.transform.parent = player.transform;
                         Debug.Log("Picked up some gold!");
-                   }                                                   
+                    }
                     if (carrying)
                     {
-                     //   carrying = false;
+                        //   carrying = false;
                         gold.transform.SetParent(null);
                         Debug.Log("Dropped some gold.");
                     }
-                }                           
-                                                                  
+                }
+            }                                                
         }
         else
         {
             Debug.Log("Cannot pick up gold while flying.");
         }
-    }
+        */
 
         if(collision.gameObject.tag == "SafeZone")
         {
-            if (Input.GetKey(KeyCode.E))
-            {
-                if (carrying)
-                {
-                    Destroy(gold);
-                    goldScore++;
-                    carrying = false;
-                }
-            }
+            inSafeZone = true;
         }
     }
 
@@ -117,11 +115,32 @@ public class GoldPickup : MonoBehaviour
             winScreen.SetActive(true);
         }
 
-        if (triggered)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if(carrying && inSafeZone)
             {
-                carrying = !carrying;
+                Destroy(goldCarrying);
+                goldScore++;
+                carrying = false;
+                goldCarrying = null;
+            }
+            else
+            {
+                if (goldInRange != null && !carrying)
+                {
+                    carrying = true;
+                    goldCarrying = goldInRange;
+                    goldInRange = null;
+                    goldCarrying.transform.parent = player.transform;
+                    Debug.Log("Picked up some gold!");
+                }
+                else if (goldCarrying != null)
+                {
+                    carrying = false;
+                    goldCarrying.transform.parent = null;
+                    goldCarrying = null;
+                    Debug.Log("Dropped some gold.");
+                }
             }
         }
     }
