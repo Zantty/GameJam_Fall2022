@@ -123,12 +123,14 @@ public class GoldPickup : MonoBehaviour
         {
             if(carrying && inSafeZone)
             {
+                GameObject instantiatedParticle = GameObject.Instantiate(scoreParticle);
+                instantiatedParticle.transform.position = goldCarrying.transform.position;
+
                 Destroy(goldCarrying);
                 goldScore++;
                 carrying = false;
                 goldCarrying = null;
-                GameObject instantiatedParticle = GameObject.Instantiate(scoreParticle);
-                instantiatedParticle.transform.position = goldCarrying.transform.position;
+                
             }
             else
             {
