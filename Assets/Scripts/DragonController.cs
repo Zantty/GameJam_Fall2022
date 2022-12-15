@@ -126,6 +126,17 @@ public class DragonController : MonoBehaviour
             }
         }
 
+        if(dragonEnergy.incapacitated && flying)
+        {
+            gameObject.layer = 0;
+            GetComponent<DragonFlying_Visual>().Set_FlyStatus(false);
+            StartCoroutine(landingSequence());
+            flyingAudio.Stop();
+
+            cloudLayer.SetActive(false);
+            cloudOpacity = 0;
+        }
+
         cloudCanvas.alpha = Mathf.Lerp(cloudCanvas.alpha, cloudOpacity, Time.deltaTime);
     }
 
