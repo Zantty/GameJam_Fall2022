@@ -120,7 +120,7 @@ public class GoldPickup : MonoBehaviour
             Time.timeScale = 0f;
             win = true;
             winScreen.SetActive(true);
-            dayCountTotal.text = "Krogar Survived" + dayCycle.currentDay.ToString() + "Days.";
+            dayCountTotal.text = "Krogar Survived \n" + dayCycle.currentDay.ToString() + "\n Days.";
         }
 
         if (Input.GetKeyDown(KeyCode.E) && !dragonController.flying)
