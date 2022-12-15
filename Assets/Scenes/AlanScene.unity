@@ -611,11 +611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e2ad1aaabc3d44d9e4c5df834e32cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &415589192 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 279391653904418773, guid: 120ee512eb00ffb47b4d5b107839aea3, type: 3}
-  m_PrefabInstance: {fileID: 169566722}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &532400898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4458227602233260758, guid: 2beadfab2e4cdff4986615b6931557e2, type: 3}
@@ -1589,7 +1584,11 @@ PrefabInstance:
     - target: {fileID: 8689491874868109906, guid: 2ee3287523078fb4eb465eb3c9b4cca2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 415589192}
+      objectReference: {fileID: 1957407255}
+    - target: {fileID: 8689491874868109906, guid: 2ee3287523078fb4eb465eb3c9b4cca2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     - target: {fileID: 8689491875260924232, guid: 2ee3287523078fb4eb465eb3c9b4cca2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
