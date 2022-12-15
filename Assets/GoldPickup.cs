@@ -24,6 +24,10 @@ public class GoldPickup : MonoBehaviour
 
     public bool win = false;
 
+    [SerializeField] private AudioSource goldAudio;
+    [SerializeField] private AudioClip[] goldAudioClips;
+    private AudioClip currentClip;
+
     private void Start()
     {
         safeZone = GetComponent<SafeZone>();
@@ -105,7 +109,9 @@ public class GoldPickup : MonoBehaviour
     {
         if (safeZone.safe)
         {
-         //   Destroy(gold.gameObject);
+            
+
+            //   Destroy(gold.gameObject);
             goldScore++;
             Debug.Log("Scored some gold!");
          //   carrying = false;
@@ -127,6 +133,10 @@ public class GoldPickup : MonoBehaviour
         {
             if(carrying && inSafeZone)
             {
+                currentClip = goldAudioClips[2];
+                goldAudio.clip = currentClip;
+                goldAudio.Play();
+
                 GameObject instantiatedParticle = GameObject.Instantiate(scoreParticle);
                 instantiatedParticle.transform.position = goldCarrying.transform.position;
 
@@ -141,6 +151,10 @@ public class GoldPickup : MonoBehaviour
             {
                 if (goldInRange != null && !carrying)
                 {
+                    currentClip = goldAudioClips[0];
+                    goldAudio.clip = currentClip;
+                    goldAudio.Play();
+
                     carrying = true;
                     goldCarrying = goldInRange;
                     goldInRange = null;
@@ -151,6 +165,10 @@ public class GoldPickup : MonoBehaviour
                 }
                 else if (goldCarrying != null)
                 {
+                    currentClip = goldAudioClips[1];
+                    goldAudio.clip = currentClip;
+                    goldAudio.Play();
+
                     carrying = false;
                     goldCarrying.transform.parent = null;
                     goldCarrying = null;
