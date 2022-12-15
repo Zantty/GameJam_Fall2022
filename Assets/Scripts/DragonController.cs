@@ -21,6 +21,8 @@ public class DragonController : MonoBehaviour
 
     public GameObject safeZoneBorder;
     public GameObject cloudLayer;
+    public CanvasGroup cloudCanvas;
+    float cloudOpacity = 0;
 
     [SerializeField] private GameObject flyingParticle;
     [SerializeField] private GameObject landingParticle;
@@ -39,6 +41,7 @@ public class DragonController : MonoBehaviour
         dead = false;
 
         spriteAnim = GetComponent<SpriteAnimation>();
+        cloudCanvas.alpha = 0;
     }
 
     void Update()
@@ -100,6 +103,9 @@ public class DragonController : MonoBehaviour
                     flyingAudio.Play();
                     GetComponent<DragonFlying_Visual>().Set_FlyStatus(true);
 
+                    cloudLayer.SetActive(true);
+                    cloudOpacity = 1;
+
                     GameObject instantiatedParticle = GameObject.Instantiate(flyingParticle);
                     instantiatedParticle.transform.position = transform.position;
                 }
@@ -108,6 +114,10 @@ public class DragonController : MonoBehaviour
                     gameObject.layer = 0;
                     GetComponent<DragonFlying_Visual>().Set_FlyStatus(false);
                     StartCoroutine(landingSequence());
+                    flyingAudio.Stop();
+
+                    cloudLayer.SetActive(false);
+                    cloudOpacity = 0;
                 }
             }
             else
@@ -116,19 +126,7 @@ public class DragonController : MonoBehaviour
             }
         }
 
-        if (flying)
-        {
-          //safeZoneBorder.SetActive(false);
-            cloudLayer.SetActive(true);
-            //flyingAudio.Play();
-        }
-
-        if(!flying)
-        {
-         // safeZoneBorder.SetActive(true);
-            cloudLayer.SetActive(false);
-            flyingAudio.Stop();
-        }
+        cloudCanvas.alpha = Mathf.Lerp(cloudCanvas.alpha, cloudOpacity, Time.deltaTime);
     }
 
     IEnumerator landingSequence()
