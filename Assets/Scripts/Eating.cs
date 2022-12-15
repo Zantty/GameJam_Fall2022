@@ -67,7 +67,7 @@ public class Eating : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (!dragonController.flying || !goldPickup.carrying)
+        if (!dragonController.flying && !goldPickup.carrying)
         {
             if (Input.GetKey(KeyCode.E) && nextAttack <= 0)
             {
