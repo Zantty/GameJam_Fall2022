@@ -18,6 +18,8 @@ public class GoldPickup : MonoBehaviour
     [SerializeField] private GameObject winScreen;
     bool inSafeZone = false;
 
+    [SerializeField] private GameObject scoreParticle;
+
     bool win = false;
 
     private void Start()
@@ -25,6 +27,7 @@ public class GoldPickup : MonoBehaviour
         safeZone = GetComponent<SafeZone>();
         player = this.gameObject;
         goldScoreText.text = goldScore.ToString();
+        winScreen.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -113,6 +116,7 @@ public class GoldPickup : MonoBehaviour
         {
             win = true;
             winScreen.SetActive(true);
+          
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -123,6 +127,8 @@ public class GoldPickup : MonoBehaviour
                 goldScore++;
                 carrying = false;
                 goldCarrying = null;
+                GameObject instantiatedParticle = GameObject.Instantiate(scoreParticle);
+                instantiatedParticle.transform.position = goldCarrying.transform.position;
             }
             else
             {

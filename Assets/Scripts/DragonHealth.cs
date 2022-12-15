@@ -9,11 +9,15 @@ public class DragonHealth : MonoBehaviour
 
     [SerializeField] private Healthbar_UI healthbar;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject mainGameUI;
+
+    [SerializeField] private GameObject bloodParticle;
 
     private void Start()
     {
         currentHealth = maxHealth;
         healthbar.Update_Healthbar(currentHealth / maxHealth);
+        mainGameUI.SetActive(true);
     }
 
     public void AddDamage(float damageAmount)
@@ -40,5 +44,9 @@ public class DragonHealth : MonoBehaviour
         Debug.Log("u ded!");
         gameOverMenu.SetActive(true);
         GameObject.Destroy(this.gameObject);
+        mainGameUI.SetActive(false);
+
+        GameObject instantiatedParticle = GameObject.Instantiate(bloodParticle);
+        instantiatedParticle.transform.position = this.gameObject.transform.position;
     }
 }

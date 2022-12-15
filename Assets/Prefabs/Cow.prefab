@@ -200,6 +200,13 @@ MonoBehaviour:
   - {fileID: 748636596, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
   - {fileID: 1550747446, guid: 977de0aa3b4fe184a952629a3a0319f4, type: 3}
   flyingSprites: []
+  landingSprites: []
+  normalIdleSprites: []
+  fatIdleSprites: []
+  skinnyIdleSprites: []
+  normalMovementSprites: []
+  fatMovementSprites: []
+  skinnyMovementSprites: []
   frameRate: 0.5
   animationState: 0
 --- !u!1 &6309293108011524297
@@ -396,7 +403,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 55
   m_TargetDisplay: 0
 --- !u!114 &1660122884457584703
 MonoBehaviour:
