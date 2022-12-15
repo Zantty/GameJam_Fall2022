@@ -132,7 +132,8 @@ public class GoldPickup : MonoBehaviour
                 goldScore++;
                 carrying = false;
                 goldCarrying = null;
-                
+
+                GameObject.FindObjectOfType<Arrow>().displayArrow = false;
             }
             else
             {
@@ -143,6 +144,8 @@ public class GoldPickup : MonoBehaviour
                     goldInRange = null;
                     goldCarrying.transform.parent = player.transform;
                     Debug.Log("Picked up some gold!");
+
+                    GameObject.FindObjectOfType<Arrow>().displayArrow = true;
                 }
                 else if (goldCarrying != null)
                 {
@@ -150,6 +153,8 @@ public class GoldPickup : MonoBehaviour
                     goldCarrying.transform.parent = null;
                     goldCarrying = null;
                     Debug.Log("Dropped some gold.");
+
+                    GameObject.FindObjectOfType<Arrow>().displayArrow = false;
                 }
             }
         }
