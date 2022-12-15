@@ -44,6 +44,7 @@ public class GoldPickup : MonoBehaviour
         {
             if (collision.gameObject.tag == "Gold")
             {
+                triggered = false;
                 collision.gameObject.GetComponent<Villager_Visual>().Toggle_Highlight(false);
             }
         }
@@ -54,23 +55,21 @@ public class GoldPickup : MonoBehaviour
     {
         if (collision.gameObject.tag == "Gold")
         {
+            triggered = true;
             if (!dragonController.flying)
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (!carrying)
-                    {
+                if (Input.GetKey(KeyCode.E))
+                {                   
+                   if (!carrying)
+                   {
                         gold = collision.gameObject;
-                        carrying = true;
+                         //   carrying = true;
                         gold.transform.parent = player.transform;
                         Debug.Log("Picked up some gold!");
-                    }
-                }
-                if (Input.GetKeyUp(KeyCode.E))
-                {
+                   }                                                   
                     if (carrying)
                     {
-                        carrying = false;
+                     //   carrying = false;
                         gold.transform.SetParent(null);
                         Debug.Log("Dropped some gold.");
                     }
@@ -122,27 +121,8 @@ public class GoldPickup : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (!carrying)
-                {
-                    carrying = true;
-                }
-                if (carrying)
-                {
-                    carrying = false;
-                }
+                carrying = !carrying;
             }
-        }
-    }
-
-    void PickUpAndDrop()
-    {
-        if (carrying)
-        {
-            carrying = false;
-        }
-        if (!carrying)
-        {
-            carrying = true;
         }
     }
 }
