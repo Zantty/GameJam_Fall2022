@@ -91,21 +91,28 @@ public class DragonController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !isLanding)
         {
-            if (!flying)
+            if (!dragonEnergy.incapacitated)
             {
-                flying = true;
-                gameObject.layer = flyingLayerIndex;
-                flyingAudio.Play();
-                GetComponent<DragonFlying_Visual>().Set_FlyStatus(true);
+                if (!flying)
+                {
+                    flying = true;
+                    gameObject.layer = flyingLayerIndex;
+                    flyingAudio.Play();
+                    GetComponent<DragonFlying_Visual>().Set_FlyStatus(true);
 
-                GameObject instantiatedParticle = GameObject.Instantiate(flyingParticle);
-                instantiatedParticle.transform.position = transform.position;
+                    GameObject instantiatedParticle = GameObject.Instantiate(flyingParticle);
+                    instantiatedParticle.transform.position = transform.position;
+                }
+                else
+                {
+                    gameObject.layer = 0;
+                    GetComponent<DragonFlying_Visual>().Set_FlyStatus(false);
+                    StartCoroutine(landingSequence());
+                }
             }
             else
             {
-                gameObject.layer = 0;
-                GetComponent<DragonFlying_Visual>().Set_FlyStatus(false);
-                StartCoroutine(landingSequence());
+                Debug.Log("Too full, cannot fly.");
             }
         }
 

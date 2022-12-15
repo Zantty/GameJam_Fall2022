@@ -21,7 +21,7 @@ public class DragonEnergy : MonoBehaviour
     public float replenishAmount;
     public float healthDecreaseAmount = 1;
 
-    bool incapacitated = false;
+    public bool incapacitated = false;
 
     public TMP_Text warningText;
 
