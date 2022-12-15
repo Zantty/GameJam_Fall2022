@@ -119,7 +119,7 @@ public class GoldPickup : MonoBehaviour
           
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !dragonController.flying)
         {
             if(carrying && inSafeZone)
             {
