@@ -43,7 +43,7 @@ public class Eating : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!dragonController.flying)
+        if (!dragonController.flying && !goldPickup.carrying)
         {
             if (collision.gameObject.tag == "Animal" || collision.gameObject.tag == "Villager")
             {
@@ -55,7 +55,7 @@ public class Eating : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!dragonController.flying)
+        if (!dragonController.flying && !goldPickup.carrying)
         {
             if (collision.gameObject.tag == "Animal" || collision.gameObject.tag == "Villager")
             {
