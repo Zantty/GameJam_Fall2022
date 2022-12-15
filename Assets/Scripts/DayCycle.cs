@@ -63,7 +63,7 @@ public class DayCycle : MonoBehaviour
 
     private void Update()
     {
-        if (goldPickup.win)
+        if (!goldPickup.win)
         {
             if (nextDay <= 0)
             {
