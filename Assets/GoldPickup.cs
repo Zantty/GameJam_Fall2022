@@ -15,6 +15,7 @@ public class GoldPickup : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject gold;
     [SerializeField] TMP_Text goldScoreText;
+    [SerializeField] private GameObject winScreen;
 
     bool win = false;
 
@@ -106,6 +107,7 @@ public class GoldPickup : MonoBehaviour
         if (goldScore >= maxScore)
         {
             win = true;
+            winScreen.SetActive(true);
         }
 
         if (triggered)
