@@ -43,6 +43,15 @@ public class DragonHealth : MonoBehaviour
         }
     }
 
+    public void AddHealth(float replenishAmount)
+    {
+        currentHealth += replenishAmount;
+        if (healthbar)
+        {
+            healthbar.Update_Healthbar(currentHealth / maxHealth);
+        }
+    }
+
     void Die()
     {
         Debug.Log("u ded!");

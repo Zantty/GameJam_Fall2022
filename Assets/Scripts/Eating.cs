@@ -81,7 +81,7 @@ public class Eating : MonoBehaviour
                     Destroy(collision.gameObject);
 
                     dragonEnergy.Eat();
-                    GetComponent<DragonHealth>().AddDamage(-regenerationAmount);
+                    GetComponent<DragonHealth>().AddHealth(regenerationAmount);
                     nextAttack = attackRate;
                     PlayRandomSound();
                     if(collision.GetComponentInParent<AnimalSpawner>())
