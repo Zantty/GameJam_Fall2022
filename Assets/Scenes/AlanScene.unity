@@ -1417,6 +1417,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8689491873908886717, guid: 2ee3287523078fb4eb465eb3c9b4cca2, type: 3}
+      propertyPath: m_text
+      value: 'Hungry Dragon
+
+        Attack'
+      objectReference: {fileID: 0}
     - target: {fileID: 8689491874195515802, guid: 2ee3287523078fb4eb465eb3c9b4cca2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
