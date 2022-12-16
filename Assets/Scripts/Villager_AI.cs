@@ -13,6 +13,7 @@ public class Villager_AI : MonoBehaviour
     private Transform dragon;
     private Rigidbody2D rigidbody;
     private SpriteAnimation spriteAnim;
+    [SerializeField] private DragonEnergy dragonEnergy;
 
     public EngagementState engagementState;
 
@@ -46,6 +47,7 @@ public class Villager_AI : MonoBehaviour
 
     void Start()
     {
+        dragonEnergy = GameObject.FindObjectOfType<DragonEnergy>();
         rigidbody = GetComponent<Rigidbody2D>();
         dragon = GameObject.FindGameObjectWithTag("Player").transform;
         if (dragon == null)
@@ -126,6 +128,11 @@ public class Villager_AI : MonoBehaviour
                         break;
                     }
             }
+        }
+
+        if(dragonEnergy.currentEnergy >= dragonEnergy.maxEnergy)
+        {
+            detectionDistance = 3000f;
         }
 
         if(nextAttack > 0)
