@@ -55,7 +55,9 @@ public class Arrow : MonoBehaviour
             {
                 arrowImage.enabled = true;
 
-                imageTransform.up = (target.position - start.position).normalized;
+                Vector3 arrowDirection = (target.position - start.position).normalized;
+                arrowDirection.z = 0;
+                imageTransform.up = arrowDirection;
                 imageTransform.Rotate(new Vector3(0, 0, 90));
 
                 Vector3 targetPositionOnScreen = mainCamera.WorldToScreenPoint(target.position);
