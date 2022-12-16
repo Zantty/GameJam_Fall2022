@@ -21,6 +21,8 @@ public class MusicManager : MonoBehaviour
         {
             musicAudioSource.Play();
         }
+
+        dragonHealth = GetComponent<DragonHealth>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -76,7 +78,7 @@ public class MusicManager : MonoBehaviour
             }
         }
 
-        if (dragonHealth.dead)
+        if (dragonHealth.dead && currentMusic != music[3])
         {
             musicAudioSource.Stop();
             if (!musicAudioSource.isPlaying)

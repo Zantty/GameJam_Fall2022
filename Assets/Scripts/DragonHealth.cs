@@ -45,10 +45,13 @@ public class DragonHealth : MonoBehaviour
     {
         Debug.Log("u ded!");
         gameOverMenu.SetActive(true);
-        GameObject.Destroy(this.gameObject);
+        //GameObject.Destroy(this.gameObject);
+        dead = true;
         mainGameUI.SetActive(false);
 
         GameObject instantiatedParticle = GameObject.Instantiate(bloodParticle);
         instantiatedParticle.transform.position = this.gameObject.transform.position;
+
+        Time.timeScale = 0;
     }
 }
