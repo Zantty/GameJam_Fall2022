@@ -5,6 +5,8 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     [SerializeField] private DragonHealth dragonHealth;
+    [SerializeField] private GoldPickup goldPickup;
+
     [SerializeField] private AudioSource musicAudioSource;
     [SerializeField] private AudioClip[] music;
 
@@ -23,6 +25,7 @@ public class MusicManager : MonoBehaviour
         }
 
         dragonHealth = GetComponent<DragonHealth>();
+        goldPickup = GetComponent<GoldPickup>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -84,6 +87,17 @@ public class MusicManager : MonoBehaviour
             if (!musicAudioSource.isPlaying)
             {
                 currentMusic = music[3];
+                musicAudioSource.clip = currentMusic;
+                musicAudioSource.Play();
+            }
+        }
+
+        if(goldPickup.win && currentMusic != music[4])
+        {
+            musicAudioSource.Stop();
+            if (!musicAudioSource.isPlaying)
+            {
+                currentMusic = music[4];
                 musicAudioSource.clip = currentMusic;
                 musicAudioSource.Play();
             }
