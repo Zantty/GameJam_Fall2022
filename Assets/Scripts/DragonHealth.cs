@@ -7,6 +7,7 @@ public class DragonHealth : MonoBehaviour
     public float maxHealth = 100;
     private float currentHealth;
 
+    [SerializeField] private Animator damageIndicator;
     [SerializeField] private Healthbar_UI healthbar;
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject mainGameUI;
@@ -25,8 +26,9 @@ public class DragonHealth : MonoBehaviour
     public void AddDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
+        damageIndicator.SetTrigger("Damaged");
 
-        if(healthbar)
+        if (healthbar)
         {
             healthbar.Update_Healthbar(currentHealth / maxHealth);
         }
